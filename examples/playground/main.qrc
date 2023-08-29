@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>PickableItem.qml</file>
+        <file>Sidebar.qml</file>
+        <file>SwipeButton.qml</file>
+        <file>SidebarViewFlex.qml</file>
+        <file>SidebarViewAlignment.qml</file>
+        <file>SidebarViewLayout.qml</file>
+        <file>SidebarLabel.qml</file>
+        <file>SidebarComboBox.qml</file>
+        <file>SidebarTextField.qml</file>
+        <file>SidebarRadioButton.qml</file>
+        <file>SidebarCenter.qml</file>
+        <file>SidebarButton.qml</file>
+    </qresource>
+</RCC>
