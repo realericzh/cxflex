@@ -18,7 +18,7 @@ qt_add_executable(Flexbox
 
     # Flexbox Core Code -->
     Flexbox/Flexbox.h Flexbox/Flexbox_p.h Flexbox/Flexbox.cpp
-    Flexbox/FlexSettings.h Flexbox/FlexSettings_p.h Flexbox/FlexSettings.cpp
+
     # <-- Flexbox Core Code
 )
 

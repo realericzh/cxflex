@@ -3,9 +3,6 @@
 
 #include <private/qquickitem_p.h>
 
-#include "FlexSettings.h"
-#include "FlexSettings_p.h"
-
 #include "yoga/YGNodeStyle.h"
 #include "yoga/YGNodeLayout.h"
 
@@ -61,7 +58,7 @@ FlexboxAttached::FlexboxAttached(QObject *parent)
 
     Q_D(FlexboxAttached);
 
-    d->node = YGNodeNewWithConfig(FlexSettingsPrivate::defaultConfig());
+    d->node = YGNodeNewWithConfig(YGConfigGetDefault());
     if (d->node) {
         YGNodeSetContext(d->node, d);
 
