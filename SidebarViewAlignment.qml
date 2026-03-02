@@ -1,13 +1,13 @@
 import QtQuick
 import QtQuick.Controls
 
-import CxFlex
+import Flexbox
 
 ScrollView {
     id: scrollView
 
     Item {
-        Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+        Flexbox.flexDirection: Flexbox.Column
 
         Flexbox.padding: 15
 
@@ -33,17 +33,17 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.justifyContent) {
-                case Flexbox.JustifyFlexStart:
+                case Flexbox.FlexStart:
                     return 0
-                case Flexbox.JustifyCenter:
+                case Flexbox.Center:
                     return 1
-                case Flexbox.JustifyFlexEnd:
+                case Flexbox.FlexEnd:
                     return 2
-                case Flexbox.JustifySpaceBetween:
+                case Flexbox.SpaceBetween:
                     return 3
-                case Flexbox.JustifySpaceAround:
+                case Flexbox.SpaceAround:
                     return 4
-                case Flexbox.JustifySpaceEvenly:
+                case Flexbox.SpaceEvenly:
                     return 5
                 }
 
@@ -54,22 +54,22 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.justifyContent = Flexbox.JustifyFlexStart
+                        currentItem.Flexbox.justifyContent = Flexbox.FlexStart
                         break
                     case 1:
-                        currentItem.Flexbox.justifyContent = Flexbox.JustifyCenter
+                        currentItem.Flexbox.justifyContent = Flexbox.Center
                         break
                     case 2:
-                        currentItem.Flexbox.justifyContent = Flexbox.JustifyFlexEnd
+                        currentItem.Flexbox.justifyContent = Flexbox.FlexEnd
                         break
                     case 3:
-                        currentItem.Flexbox.justifyContent = Flexbox.JustifySpaceBetween
+                        currentItem.Flexbox.justifyContent = Flexbox.SpaceBetween
                         break
                     case 4:
-                        currentItem.Flexbox.justifyContent = Flexbox.JustifySpaceAround
+                        currentItem.Flexbox.justifyContent = Flexbox.SpaceAround
                         break
                     case 5:
-                        currentItem.Flexbox.justifyContent = Flexbox.JustifySpaceEvenly
+                        currentItem.Flexbox.justifyContent = Flexbox.SpaceEvenly
                         break
                     }
                 }
@@ -98,21 +98,21 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.alignItems) {
-                case Flexbox.AlignAuto:
+                case Flexbox.Auto:
                     return 0
-                case Flexbox.AlignFlexStart:
+                case Flexbox.FlexStart:
                     return 1
-                case Flexbox.AlignCenter:
+                case Flexbox.Center:
                     return 2
-                case Flexbox.AlignFlexEnd:
+                case Flexbox.FlexEnd:
                     return 3
-                case Flexbox.AlignStretch:
+                case Flexbox.Stretch:
                     return 4
-                case Flexbox.AlignBaseline:
+                case Flexbox.Baseline:
                     return 5
-                case Flexbox.AlignSpaceBetween:
+                case Flexbox.SpaceBetween:
                     return 6
-                case Flexbox.AlignSpaceAround:
+                case Flexbox.SpaceAround:
                     return 7
                 }
 
@@ -123,28 +123,28 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignAuto
+                        currentItem.Flexbox.alignItems = Flexbox.Auto
                         break
                     case 1:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignFlexStart
+                        currentItem.Flexbox.alignItems = Flexbox.FlexStart
                         break
                     case 2:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignCenter
+                        currentItem.Flexbox.alignItems = Flexbox.Center
                         break
                     case 3:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignFlexEnd
+                        currentItem.Flexbox.alignItems = Flexbox.FlexEnd
                         break
                     case 4:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignStretch
+                        currentItem.Flexbox.alignItems = Flexbox.Stretch
                         break
                     case 5:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignBaseline
+                        currentItem.Flexbox.alignItems = Flexbox.Baseline
                         break
                     case 6:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignSpaceBetween
+                        currentItem.Flexbox.alignItems = Flexbox.SpaceBetween
                         break
                     case 7:
-                        currentItem.Flexbox.alignItems = Flexbox.AlignSpaceAround
+                        currentItem.Flexbox.alignItems = Flexbox.SpaceAround
                         break
                     }
                 }
@@ -175,21 +175,21 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.alignSelf) {
-                case Flexbox.AlignAuto:
+                case Flexbox.Auto:
                     return 0
-                case Flexbox.AlignFlexStart:
+                case Flexbox.FlexStart:
                     return 1
-                case Flexbox.AlignCenter:
+                case Flexbox.Center:
                     return 2
-                case Flexbox.AlignFlexEnd:
+                case Flexbox.FlexEnd:
                     return 3
-                case Flexbox.AlignStretch:
+                case Flexbox.Stretch:
                     return 4
-                case Flexbox.AlignBaseline:
+                case Flexbox.Baseline:
                     return 5
-                case Flexbox.AlignSpaceBetween:
+                case Flexbox.SpaceBetween:
                     return 6
-                case Flexbox.AlignSpaceAround:
+                case Flexbox.SpaceAround:
                     return 7
                 }
 
@@ -200,28 +200,28 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignAuto
+                        currentItem.Flexbox.alignSelf = Flexbox.Auto
                         break
                     case 1:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignFlexStart
+                        currentItem.Flexbox.alignSelf = Flexbox.FlexStart
                         break
                     case 2:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignCenter
+                        currentItem.Flexbox.alignSelf = Flexbox.Center
                         break
                     case 3:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignFlexEnd
+                        currentItem.Flexbox.alignSelf = Flexbox.FlexEnd
                         break
                     case 4:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignStretch
+                        currentItem.Flexbox.alignSelf = Flexbox.Stretch
                         break
                     case 5:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignBaseline
+                        currentItem.Flexbox.alignSelf = Flexbox.Baseline
                         break
                     case 6:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignSpaceBetween
+                        currentItem.Flexbox.alignSelf = Flexbox.SpaceBetween
                         break
                     case 7:
-                        currentItem.Flexbox.alignSelf = Flexbox.AlignSpaceAround
+                        currentItem.Flexbox.alignSelf = Flexbox.SpaceAround
                         break
                     }
                 }
@@ -250,21 +250,21 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.alignContent) {
-                case Flexbox.AlignAuto:
+                case Flexbox.Auto:
                     return 0
-                case Flexbox.AlignFlexStart:
+                case Flexbox.FlexStart:
                     return 1
-                case Flexbox.AlignCenter:
+                case Flexbox.Center:
                     return 2
-                case Flexbox.AlignFlexEnd:
+                case Flexbox.FlexEnd:
                     return 3
-                case Flexbox.AlignStretch:
+                case Flexbox.Stretch:
                     return 4
-                case Flexbox.AlignBaseline:
+                case Flexbox.Baseline:
                     return 5
-                case Flexbox.AlignSpaceBetween:
+                case Flexbox.SpaceBetween:
                     return 6
-                case Flexbox.AlignSpaceAround:
+                case Flexbox.SpaceAround:
                     return 7
                 }
 
@@ -275,28 +275,28 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignAuto
+                        currentItem.Flexbox.alignContent = Flexbox.Auto
                         break
                     case 1:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignFlexStart
+                        currentItem.Flexbox.alignContent = Flexbox.FlexStart
                         break
                     case 2:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignCenter
+                        currentItem.Flexbox.alignContent = Flexbox.Center
                         break
                     case 3:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignFlexEnd
+                        currentItem.Flexbox.alignContent = Flexbox.FlexEnd
                         break
                     case 4:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignStretch
+                        currentItem.Flexbox.alignContent = Flexbox.Stretch
                         break
                     case 5:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignBaseline
+                        currentItem.Flexbox.alignContent = Flexbox.Baseline
                         break
                     case 6:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignSpaceBetween
+                        currentItem.Flexbox.alignContent = Flexbox.SpaceBetween
                         break
                     case 7:
-                        currentItem.Flexbox.alignContent = Flexbox.AlignSpaceAround
+                        currentItem.Flexbox.alignContent = Flexbox.SpaceAround
                         break
                     }
                 }

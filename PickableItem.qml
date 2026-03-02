@@ -1,6 +1,6 @@
 import QtQuick
 
-import CxFlex
+import Flexbox
 
 Item {
     id: flexNode

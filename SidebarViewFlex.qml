@@ -1,13 +1,13 @@
 import QtQuick
 import QtQuick.Controls
 
-import CxFlex
+import Flexbox
 
 ScrollView {
     id: scrollView
 
     Item {
-        Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+        Flexbox.flexDirection: Flexbox.Column
 
         Flexbox.padding: 15
 
@@ -25,16 +25,16 @@ ScrollView {
         Item {
             id: directionRow
 
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
 
             SidebarRadioButton {
                 radiusPosition: -1
 
                 text: "inherit"
-                checked: currentItem && currentItem.Flexbox.direction === Flexbox.DirectionInherit
+                checked: currentItem && currentItem.Flexbox.direction === Flexbox.Inherit
                 onClicked: {
                     if (currentItem) {
-                        currentItem.Flexbox.direction = Flexbox.DirectionInherit
+                        currentItem.Flexbox.direction = Flexbox.Inherit
                     }
                 }
             }
@@ -43,10 +43,10 @@ ScrollView {
                 radiusPosition: 0
 
                 text: "ltr"
-                checked: currentItem && currentItem.Flexbox.direction === Flexbox.DirectionLTR
+                checked: currentItem && currentItem.Flexbox.direction === Flexbox.LTR
                 onClicked: {
                     if (currentItem) {
-                        currentItem.Flexbox.direction = Flexbox.DirectionLTR
+                        currentItem.Flexbox.direction = Flexbox.LTR
                     }
                 }
             }
@@ -55,10 +55,10 @@ ScrollView {
                 radiusPosition: 1
 
                 text: "rtl"
-                checked: currentItem && currentItem.Flexbox.direction === Flexbox.DirectionRTL
+                checked: currentItem && currentItem.Flexbox.direction === Flexbox.RTL
                 onClicked: {
                     if (currentItem) {
-                        currentItem.Flexbox.direction = Flexbox.DirectionRTL
+                        currentItem.Flexbox.direction = Flexbox.RTL
                     }
                 }
             }
@@ -82,13 +82,13 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.flexDirection) {
-                case Flexbox.FlexDirectionColumn:
+                case Flexbox.Column:
                     return 0
-                case Flexbox.FlexDirectionColumnReverse:
+                case Flexbox.ColumnReverse:
                     return 1
-                case Flexbox.FlexDirectionRow:
+                case Flexbox.Row:
                     return 2
-                case Flexbox.FlexDirectionRowReverse:
+                case Flexbox.RowReverse:
                     return 3
                 }
 
@@ -99,16 +99,16 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionColumn
+                        currentItem.Flexbox.flexDirection = Flexbox.Column
                         break
                     case 1:
-                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionColumnReverse
+                        currentItem.Flexbox.flexDirection = Flexbox.ColumnReverse
                         break
                     case 2:
-                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionRow
+                        currentItem.Flexbox.flexDirection = Flexbox.Row
                         break
                     case 3:
-                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionRowReverse
+                        currentItem.Flexbox.flexDirection = Flexbox.RowReverse
                         break
                     }
                 }
@@ -116,11 +116,11 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.gap: 15
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
                 Flexbox.flexGrow: 1
 
                 SidebarLabel {
@@ -143,7 +143,7 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
                 Flexbox.flexGrow: 1
 
                 SidebarLabel {
@@ -166,7 +166,7 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
                 Flexbox.flexGrow: 1
 
                 SidebarLabel {
@@ -201,16 +201,16 @@ ScrollView {
         Item {
             id: flexWrapRow
 
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
 
             SidebarRadioButton {
                 radiusPosition: -1
 
                 text: "no wrap"
-                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapNoWrap
+                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.NoWrap
                 onClicked: {
                     if (currentItem) {
-                        currentItem.Flexbox.flexWrap = Flexbox.WrapNoWrap
+                        currentItem.Flexbox.flexWrap = Flexbox.NoWrap
                     }
                 }
             }
@@ -219,10 +219,10 @@ ScrollView {
                 radiusPosition: 0
 
                 text: "wrap"
-                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapWrap
+                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.Wrap
                 onClicked: {
                     if (currentItem) {
-                        currentItem.Flexbox.flexWrap = Flexbox.WrapWrap
+                        currentItem.Flexbox.flexWrap = Flexbox.Wrap
                     }
                 }
             }
@@ -231,21 +231,21 @@ ScrollView {
                 radiusPosition: 1
 
                 text: "wrap reverse"
-                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapWrapReverse
+                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapReverse
                 onClicked: {
                     if (currentItem) {
-                        currentItem.Flexbox.flexWrap = Flexbox.WrapWrapReverse
+                        currentItem.Flexbox.flexWrap = Flexbox.WrapReverse
                     }
                 }
             }
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.gap: 15
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
                 Flexbox.flexGrow: 1
 
                 SidebarLabel {
@@ -267,7 +267,7 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
                 Flexbox.flexGrow: 1
 
                 SidebarLabel {
@@ -289,7 +289,7 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
                 Flexbox.flexGrow: 1
 
                 SidebarLabel {

@@ -1,13 +1,13 @@
 import QtQuick
 import QtQuick.Controls
 
-import CxFlex
+import Flexbox
 
 ScrollView {
     id: scrollView
 
     Item {
-        Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+        Flexbox.flexDirection: Flexbox.Column
 
         Flexbox.padding: 15
 
@@ -18,7 +18,7 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.columnGap: 15
 
             SidebarTextField {
@@ -81,7 +81,7 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.columnGap: 15
 
             SidebarTextField {
@@ -144,7 +144,7 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.columnGap: 15
 
             SidebarTextField {
@@ -220,17 +220,17 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.columnGap: 15
 
             Flexbox.topMargin: 20
 
-            Flexbox.justifyContent: Flexbox.JustifyCenter
+            Flexbox.justifyContent: Flexbox.Center
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     Flexbox.width: 55
@@ -248,9 +248,9 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     Flexbox.width: 55
@@ -284,9 +284,9 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     Flexbox.width: 55
@@ -305,17 +305,17 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.columnGap: 15
 
             Flexbox.topMargin: 20
 
-            Flexbox.justifyContent: Flexbox.JustifyCenter
+            Flexbox.justifyContent: Flexbox.Center
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     Flexbox.width: 55
@@ -333,10 +333,10 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
-                Flexbox.alignItems: Flexbox.AlignCenter
+                Flexbox.justifyContent: Flexbox.Center
+                Flexbox.alignItems: Flexbox.Center
 
                 SidebarTextField {
                     Flexbox.width: 55
@@ -370,9 +370,9 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     Flexbox.width: 55
@@ -391,17 +391,17 @@ ScrollView {
         }
 
         Item {
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
             Flexbox.columnGap: 15
 
             Flexbox.topMargin: 20
 
-            Flexbox.justifyContent: Flexbox.JustifyCenter
+            Flexbox.justifyContent: Flexbox.Center
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
@@ -420,9 +420,9 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
@@ -458,9 +458,9 @@ ScrollView {
             }
 
             Item {
-                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexDirection: Flexbox.Column
 
-                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.justifyContent: Flexbox.Center
 
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
@@ -491,7 +491,7 @@ ScrollView {
         Item {
             id: displayRow
 
-            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.flexDirection: Flexbox.Row
 
             SidebarRadioButton {
                 radiusPosition: -1

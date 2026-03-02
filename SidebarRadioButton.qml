@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Templates
 
-import CxFlex
+import Flexbox
 
 Button {
     id: control

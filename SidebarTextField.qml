@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Templates
 
-import CxFlex
+import Flexbox
 
 TextField {
     id: control

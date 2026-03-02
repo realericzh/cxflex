@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Controls
 
-import CxFlex
+import Flexbox
 
 Window {
     width: 1280
@@ -30,11 +30,11 @@ Window {
             fill: parent
         }
 
-        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+        Flexbox.flexDirection: Flexbox.Row
 
         Item {
-            Flexbox.justifyContent: Flexbox.JustifyCenter
-            Flexbox.alignItems: Flexbox.AlignCenter
+            Flexbox.justifyContent: Flexbox.Center
+            Flexbox.alignItems: Flexbox.Center
 
             Flexbox.leftMargin: -175
             Flexbox.rightMargin: 175

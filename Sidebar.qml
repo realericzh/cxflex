@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Effects
 import QtQuick.Controls
 
-import CxFlex
+import Flexbox
 
 Item {
     id: sidebar
@@ -10,10 +10,10 @@ Item {
     Flexbox.width: 350
     Flexbox.height: currentItem ? 428 : 108
 
-    Flexbox.position: Flexbox.PositionAbsolute
+    Flexbox.position: Flexbox.Absolute
 
-    Flexbox.positionTop: 25
-    Flexbox.positionRight: 25
+    Flexbox.top: 25
+    Flexbox.right: 25
 
     Rectangle {
         id: background
@@ -43,7 +43,7 @@ Item {
     Item {
         id: tabbarNode
 
-        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+        Flexbox.flexDirection: Flexbox.Row
 
         SwipeButton {
             text: "Flex"
@@ -93,7 +93,7 @@ Item {
     Item {
         id: swipeViewNode
 
-        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+        Flexbox.flexDirection: Flexbox.Row
 
         Flexbox.flexGrow: 1
 
@@ -118,13 +118,13 @@ Item {
     Item {
         id: buttonNode
 
-        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+        Flexbox.flexDirection: Flexbox.Row
 
         Flexbox.height: 62
 
         visible: currentItem != null
 
-        Flexbox.justifyContent: Flexbox.JustifyCenter
+        Flexbox.justifyContent: Flexbox.Center
 
         Flexbox.columnGap: 15
 
@@ -148,7 +148,7 @@ Item {
     }
 
     Item {
-        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+        Flexbox.flexDirection: Flexbox.Row
 
         Flexbox.width: "100%"
         Flexbox.height: "100%"

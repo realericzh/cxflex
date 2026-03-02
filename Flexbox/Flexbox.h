@@ -1,7 +1,8 @@
 #ifndef REALERICZH_FLEXBOX_H
 #define REALERICZH_FLEXBOX_H
 
-#include <QQuickItem>
+#include <QObject>
+#include <QJSValue>
 #include <QtQmlIntegration>
 
 // class Flexbox
@@ -11,76 +12,69 @@ class FlexboxAttached;
 class Flexbox : public QObject
 {
     Q_OBJECT
-
+    QML_ELEMENT
     QML_ATTACHED(FlexboxAttached)
 
 public:
     static FlexboxAttached *qmlAttachedProperties(QObject *attachee);
 
 public:
-    enum Direction {
-        DirectionInherit,
-        DirectionLTR,
-        DirectionRTL,
-    };
-    Q_ENUM(Direction)
+    enum Generic {
+        // Align
+        Auto,
+        FlexStart,
+        Center,
+        FlexEnd,
+        Stretch,
+        Baseline,
+        SpaceBetween,
+        SpaceAround,
+        SpaceEvenly,
 
-    enum Position {
-        PositionStatic,
-        PositionRelative,
-        PositionAbsolute,
-    };
-    Q_ENUM(Position)
+        // BoxSizing
+        BorderBox,
+        ContentBox,
 
-    enum Display {
-        DisplayFlex,
-        DisplayNone,
-    };
-    Q_ENUM(Display)
+        // Direction
+        Inherit,
+        LTR,
+        RTL,
 
-    enum Overflow {
-        OverflowVisible,
-        OverflowHidden,
-        OverflowScroll,
-    };
-    Q_ENUM(Overflow)
+        // Display
+        Flex,
+        None,
+        Contents,
 
-    enum FlexDirection {
-        FlexDirectionColumn,
-        FlexDirectionColumnReverse,
-        FlexDirectionRow,
-        FlexDirectionRowReverse,
-    };
-    Q_ENUM(FlexDirection)
+        // FlexDirection
+        Column,
+        ColumnReverse,
+        Row,
+        RowReverse,
 
-    enum Justify {
-        JustifyFlexStart,
-        JustifyCenter,
-        JustifyFlexEnd,
-        JustifySpaceBetween,
-        JustifySpaceAround,
-        JustifySpaceEvenly,
-    };
-    Q_ENUM(Justify)
+        // Justify
+        // FlexStart,
+        // Center,
+        // FlexEnd,
+        // SpaceBetween,
+        // SpaceAround,
+        // SpaceEvenly,
 
-    enum Align {
-        AlignAuto,
-        AlignFlexStart,
-        AlignCenter,
-        AlignFlexEnd,
-        AlignStretch,
-        AlignBaseline,
-        AlignSpaceBetween,
-        AlignSpaceAround,
-    };
-    Q_ENUM(Align)
+        // Overflow
+        Visible,
+        Hidden,
+        Scroll,
 
-    enum Wrap {
-        WrapNoWrap,
-        WrapWrap,
-        WrapWrapReverse,
+        // Position
+        Static,
+        Relative,
+        Absolute,
+
+        // Wrap
+        NoWrap,
+        Wrap,
+        WrapReverse,
     };
-    Q_ENUM(Wrap);
+    Q_ENUM(Generic)
 };
 
 // class FlexboxAttached
@@ -90,6 +84,26 @@ class FlexboxAttached : public QObject
 {
     Q_OBJECT
     Q_DECLARE_PRIVATE(FlexboxAttached)
+
+    Q_PROPERTY(Flexbox::Generic direction READ direction WRITE setDirection NOTIFY directionChanged)
+    Q_PROPERTY(Flexbox::Generic position READ position WRITE setPosition NOTIFY positionChanged)
+    Q_PROPERTY(Flexbox::Generic display READ display WRITE setDisplay NOTIFY displayChanged)
+    Q_PROPERTY(Flexbox::Generic overflow READ overflow WRITE setOverflow NOTIFY overflowChanged)
+    Q_PROPERTY(Flexbox::Generic boxSizing READ boxSizing WRITE setBoxSizing NOTIFY boxSizingChanged)
+
+    Q_PROPERTY(Flexbox::Generic justifyContent READ justifyContent WRITE setJustifyContent NOTIFY justifyContentChanged)
+    Q_PROPERTY(Flexbox::Generic flexDirection READ flexDirection WRITE setFlexDirection NOTIFY flexDirectionChanged)
+    Q_PROPERTY(Flexbox::Generic alignContent READ alignContent WRITE setAlignContent NOTIFY alignContentChanged)
+    Q_PROPERTY(Flexbox::Generic alignItems READ alignItems WRITE setAlignItems NOTIFY alignItemsChanged)
+    Q_PROPERTY(Flexbox::Generic alignSelf READ alignSelf WRITE setAlignSelf NOTIFY alignSelfChanged)
+    Q_PROPERTY(Flexbox::Generic flexWrap READ flexWrap WRITE setFlexWrap NOTIFY flexWrapChanged)
+
+    Q_PROPERTY(QJSValue left READ left WRITE setLeft NOTIFY leftChanged)
+    Q_PROPERTY(QJSValue top READ top WRITE setTop NOTIFY topChanged)
+    Q_PROPERTY(QJSValue right READ right WRITE setRight NOTIFY rightChanged)
+    Q_PROPERTY(QJSValue bottom READ bottom WRITE setBottom NOTIFY bottomChanged)
+    Q_PROPERTY(QJSValue start READ start WRITE setStart NOTIFY startChanged)
+    Q_PROPERTY(QJSValue end READ end WRITE setEnd NOTIFY endChanged)
 
     Q_PROPERTY(QJSValue width READ width WRITE setWidth NOTIFY widthChanged)
     Q_PROPERTY(QJSValue height READ height WRITE setHeight NOTIFY heightChanged)
@@ -129,25 +143,6 @@ class FlexboxAttached : public QObject
     Q_PROPERTY(QJSValue verticalBorder READ verticalBorder WRITE setVerticalBorder NOTIFY verticalBorderChanged)
     Q_PROPERTY(QJSValue borders READ borders WRITE setBorders NOTIFY bordersChanged)
 
-    Q_PROPERTY(Flexbox::Direction direction READ direction WRITE setDirection NOTIFY directionChanged)
-    Q_PROPERTY(Flexbox::Position position READ position WRITE setPosition NOTIFY positionChanged)
-    Q_PROPERTY(Flexbox::Display display READ display WRITE setDisplay NOTIFY displayChanged)
-    Q_PROPERTY(Flexbox::Overflow overflow READ overflow WRITE setOverflow NOTIFY overflowChanged)
-
-    Q_PROPERTY(QJSValue positionLeft READ positionLeft WRITE setPositionLeft NOTIFY positionLeftChanged)
-    Q_PROPERTY(QJSValue positionTop READ positionTop WRITE setPositionTop NOTIFY positionTopChanged)
-    Q_PROPERTY(QJSValue positionRight READ positionRight WRITE setPositionRight NOTIFY positionRightChanged)
-    Q_PROPERTY(QJSValue positionBottom READ positionBottom WRITE setPositionBottom NOTIFY positionBottomChanged)
-    Q_PROPERTY(QJSValue positionStart READ positionStart WRITE setPositionStart NOTIFY positionStartChanged)
-    Q_PROPERTY(QJSValue positionEnd READ positionEnd WRITE setPositionEnd NOTIFY positionEndChanged)
-
-    Q_PROPERTY(Flexbox::FlexDirection flexDirection READ flexDirection WRITE setFlexDirection NOTIFY flexDirectionChanged)
-    Q_PROPERTY(Flexbox::Justify justifyContent READ justifyContent WRITE setJustifyContent NOTIFY justifyContentChanged)
-    Q_PROPERTY(Flexbox::Align alignContent READ alignContent WRITE setAlignContent NOTIFY alignContentChanged)
-    Q_PROPERTY(Flexbox::Align alignItems READ alignItems WRITE setAlignItems NOTIFY alignItemsChanged)
-    Q_PROPERTY(Flexbox::Align alignSelf READ alignSelf WRITE setAlignSelf NOTIFY alignSelfChanged)
-    Q_PROPERTY(Flexbox::Wrap flexWrap READ flexWrap WRITE setFlexWrap NOTIFY flexWrapChanged)
-
     Q_PROPERTY(QJSValue columnGap READ columnGap WRITE setColumnGap NOTIFY columnGapChanged)
     Q_PROPERTY(QJSValue rowGap READ rowGap WRITE setRowGap NOTIFY rowGapChanged)
     Q_PROPERTY(QJSValue gap READ gap WRITE setGap NOTIFY gapChanged)
@@ -161,11 +156,73 @@ class FlexboxAttached : public QObject
 
 public:
     explicit FlexboxAttached(QObject *parent = nullptr);
-    virtual ~FlexboxAttached();
+    virtual ~FlexboxAttached() override;
 protected:
     QScopedPointer<FlexboxAttachedPrivate> d_ptr;
 
-    // https://www.yogalayout.dev/docs/styling/width-height
+signals:
+    void directionChanged();
+    void positionChanged();
+    void displayChanged();
+    void overflowChanged();
+    void boxSizingChanged();
+public:
+    void setDirection(Flexbox::Generic value);
+    void setPosition(Flexbox::Generic value);
+    void setDisplay(Flexbox::Generic value);
+    void setOverflow(Flexbox::Generic value);
+    void setBoxSizing(Flexbox::Generic value);
+public:
+    Flexbox::Generic direction() const;
+    Flexbox::Generic position() const;
+    Flexbox::Generic display() const;
+    Flexbox::Generic overflow() const;
+    Flexbox::Generic boxSizing() const;
+
+signals:
+    void justifyContentChanged();
+    void flexDirectionChanged();
+    void alignContentChanged();
+    void alignItemsChanged();
+    void alignSelfChanged();
+    void flexWrapChanged();
+public:
+    void setJustifyContent(Flexbox::Generic value);
+    void setFlexDirection(Flexbox::Generic value);
+    void setAlignContent(Flexbox::Generic value);
+    void setAlignItems(Flexbox::Generic value);
+    void setAlignSelf(Flexbox::Generic value);
+    void setFlexWrap(Flexbox::Generic value);
+public:
+    Flexbox::Generic justifyContent() const;
+    Flexbox::Generic flexDirection() const;
+    Flexbox::Generic alignContent() const;
+    Flexbox::Generic alignItems() const;
+    Flexbox::Generic alignSelf() const;
+    Flexbox::Generic flexWrap() const;
+
+signals:
+    void leftChanged();
+    void topChanged();
+    void rightChanged();
+    void bottomChanged();
+    void startChanged();
+    void endChanged();
+public:
+    void setLeft(QJSValue value);
+    void setTop(QJSValue value);
+    void setRight(QJSValue value);
+    void setBottom(QJSValue value);
+    void setStart(QJSValue value);
+    void setEnd(QJSValue value);
+public:
+    QJSValue left() const;
+    QJSValue top() const;
+    QJSValue right() const;
+    QJSValue bottom() const;
+    QJSValue start() const;
+    QJSValue end() const;
+
 signals:
     void widthChanged();
     void heightChanged();
@@ -176,7 +233,6 @@ public:
     QJSValue width() const;
     QJSValue height() const;
 
-    // https://www.yogalayout.dev/docs/styling/min-max-width-height
 signals:
     void minimumWidthChanged();
     void minimumHeightChanged();
@@ -193,7 +249,6 @@ public:
     QJSValue maximumWidth() const;
     QJSValue maximumHeight() const;
 
-    // https://www.yogalayout.dev/docs/styling/margin-padding-border
 signals:
     void leftMarginChanged();
     void topMarginChanged();
@@ -225,7 +280,6 @@ public:
     QJSValue verticalMargin() const;
     QJSValue margins() const;
 
-    // https://www.yogalayout.dev/docs/styling/margin-padding-border
 signals:
     void leftPaddingChanged();
     void topPaddingChanged();
@@ -257,7 +311,6 @@ public:
     QJSValue verticalPadding() const;
     QJSValue padding() const;
 
-    // https://www.yogalayout.dev/docs/styling/margin-padding-border
 signals:
     void leftBorderChanged();
     void topBorderChanged();
@@ -288,69 +341,6 @@ public:
     QJSValue horizontalBorder() const;
     QJSValue verticalBorder() const;
     QJSValue borders() const;
-
-    // https://www.yogalayout.dev/docs/styling/position
-    // https://www.yogalayout.dev/docs/styling/display
-signals:
-    void directionChanged();
-    void positionChanged();
-    void displayChanged();
-    void overflowChanged();
-public:
-    void setDirection(Flexbox::Direction value);
-    void setPosition(Flexbox::Position value);
-    void setDisplay(Flexbox::Display value);
-    void setOverflow(Flexbox::Overflow value);
-public:
-    Flexbox::Direction direction() const;
-    Flexbox::Position position() const;
-    Flexbox::Display display() const;
-    Flexbox::Overflow overflow() const;
-
-    // https://www.yogalayout.dev/docs/styling/layout-direction
-signals:
-    void positionLeftChanged();
-    void positionTopChanged();
-    void positionRightChanged();
-    void positionBottomChanged();
-    void positionStartChanged();
-    void positionEndChanged();
-public:
-    void setPositionLeft(QJSValue value);
-    void setPositionTop(QJSValue value);
-    void setPositionRight(QJSValue value);
-    void setPositionBottom(QJSValue value);
-    void setPositionStart(QJSValue value);
-    void setPositionEnd(QJSValue value);
-public:
-    QJSValue positionLeft() const;
-    QJSValue positionTop() const;
-    QJSValue positionRight() const;
-    QJSValue positionBottom() const;
-    QJSValue positionStart() const;
-    QJSValue positionEnd() const;
-
-signals:
-    void flexDirectionChanged();
-    void justifyContentChanged();
-    void alignContentChanged();
-    void alignItemsChanged();
-    void alignSelfChanged();
-    void flexWrapChanged();
-public:
-    void setFlexDirection(Flexbox::FlexDirection value);
-    void setJustifyContent(Flexbox::Justify value);
-    void setAlignContent(Flexbox::Align value);
-    void setAlignItems(Flexbox::Align value);
-    void setAlignSelf(Flexbox::Align value);
-    void setFlexWrap(Flexbox::Wrap value);
-public:
-    Flexbox::FlexDirection flexDirection() const;
-    Flexbox::Justify justifyContent() const;
-    Flexbox::Align alignContent() const;
-    Flexbox::Align alignItems() const;
-    Flexbox::Align alignSelf() const;
-    Flexbox::Wrap flexWrap() const;
 
 signals:
     void columnGapChanged();
