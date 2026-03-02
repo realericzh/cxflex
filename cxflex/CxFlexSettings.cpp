@@ -17,7 +17,7 @@ CxFlexSettings::CxFlexSettings(QObject *parent)
     YGConfigSetContext(d->config, this);
     YGConfigSetLogger(d->config, &CxFlexSettingsPrivate::logger);
 
-    YGConfigSetPrintTreeFlag(d->config, true);
+    // YGConfigSetPrintTreeFlag(d->config, true);
 }
 
 CxFlexSettings *CxFlexSettings::instance()
@@ -43,7 +43,7 @@ CxFlexSettingsPrivate::~CxFlexSettingsPrivate()
 {
 }
 
-YGConfigRef CxFlexSettingsPrivate::defaultConfig()
+YGConfigConstRef CxFlexSettingsPrivate::defaultConfig()
 {
     CxFlexSettings *settings = staticFlexSettings;
     if (settings) {
@@ -53,7 +53,7 @@ YGConfigRef CxFlexSettingsPrivate::defaultConfig()
     return YGConfigGetDefault();
 }
 
-int CxFlexSettingsPrivate::logger(YGConfigRef config, YGNodeRef node, YGLogLevel level, const char *format, va_list args)
+int CxFlexSettingsPrivate::logger(YGConfigConstRef config, YGNodeConstRef node, YGLogLevel level, const char *format, va_list args)
 {
     Q_UNUSED(config);
     Q_UNUSED(node);

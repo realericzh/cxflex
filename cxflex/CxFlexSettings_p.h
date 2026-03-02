@@ -21,12 +21,12 @@ public:
 
 public:
     YGConfigRef makeConfig() { return config; }
-    static YGConfigRef defaultConfig();
+    static YGConfigConstRef defaultConfig();
 protected:
     YGConfigRef config = nullptr;
 
 protected:
-    static int logger(YGConfigRef config, YGNodeRef node, YGLogLevel level, const char* format, va_list args);
+    static int logger(YGConfigConstRef config, YGNodeConstRef node, YGLogLevel level, const char *format, va_list args);
 };
 
 #endif // CXFLEXSETTINGS_P_H

@@ -44,7 +44,7 @@ FlexboxAttached::FlexboxAttached(QObject *parent)
             }
 
             if (childNode) {
-                const uint32_t index = YGNodeGetChildCount(d->node);
+                const size_t index = YGNodeGetChildCount(d->node);
                 YGNodeInsertChild(d->node, childNode, index);
             }
         }
@@ -1417,7 +1417,7 @@ void FlexboxAttachedPrivate::itemChildAdded(QQuickItem *, QQuickItem *child)
     }
 
     if (childNode) {
-        const uint32_t index = YGNodeGetChildCount(node);
+        const size_t index = YGNodeGetChildCount(node);
         YGNodeInsertChild(node, childNode, index);
     }
 }
@@ -1458,14 +1458,14 @@ void FlexboxAttachedPrivate::itemOpacityChanged(QQuickItem *)
 {
 }
 
-FlexboxAttachedPrivate *FlexboxAttachedPrivate::context(YGNodeRef node)
+FlexboxAttachedPrivate *FlexboxAttachedPrivate::context(YGNodeConstRef node)
 {
     Q_ASSERT(YGNodeGetContext(node) != nullptr);
 
     return static_cast<FlexboxAttachedPrivate *>(YGNodeGetContext(node));
 }
 
-void FlexboxAttachedPrivate::onDirtied(YGNodeRef node)
+void FlexboxAttachedPrivate::onDirtied(YGNodeConstRef node)
 {
     context(node)->buildLayout();
 }
@@ -1548,8 +1548,8 @@ void FlexboxAttachedPrivate::applyLayout()
         }
     }
 
-    const uint32_t count = YGNodeGetChildCount(node);
-    for (uint32_t index = 0; index < count; ++index) {
+    const size_t count = YGNodeGetChildCount(node);
+    for (size_t index = 0; index < count; ++index) {
         YGNodeRef childNode = YGNodeGetChild(node, index);
 
         context(childNode)->applyLayout();

@@ -45,8 +45,8 @@ protected:
     bool debug = false;
 
 public:
-    static FlexboxAttachedPrivate *context(YGNodeRef node);
-    static void onDirtied(YGNodeRef node);
+    static FlexboxAttachedPrivate *context(YGNodeConstRef node);
+    static void onDirtied(YGNodeConstRef node);
 public:
     YGNodeRef node = nullptr;
 
