@@ -25,19 +25,21 @@ Window {
         }
     }
 
-    CxFlexRow {
+    Item {
         anchors {
             fill: parent
         }
 
-        CxFlexRow {
-            justifyContent: CxFlex.JustifyCenter
-            alignItems: CxFlex.AlignCenter
+        Flexbox.flexDirection: Flexbox.FlexDirectionRow
 
-            marginLeft: -175
-            marginRight: 175
+        Item {
+            Flexbox.justifyContent: Flexbox.JustifyCenter
+            Flexbox.alignItems: Flexbox.AlignCenter
 
-            flexGrow: 1
+            Flexbox.leftMargin: -175
+            Flexbox.rightMargin: 175
+
+            Flexbox.flexGrow: 1
 
             MultiEffect {
                 anchors {
@@ -56,8 +58,8 @@ Window {
             PickableItem {
                 id: rootItem2
 
-                preferredWidth: 500
-                preferredHeight: 500
+                Flexbox.width: 500
+                Flexbox.height: 500
             }
         }
 

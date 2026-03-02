@@ -6,20 +6,23 @@ import CxFlex
 ScrollView {
     id: scrollView
 
-    CxFlexColumn {
-        width: scrollView.width - 15
+    Item {
+        Flexbox.flexDirection: Flexbox.FlexDirectionColumn
 
-        padding: 15
+        Flexbox.padding: 15
+
+        width: scrollView.width - 15
 
         SidebarLabel {
             text: "WIDTH x HEIGHT"
         }
 
-        CxFlexRow {
-            columnGap: 15
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.columnGap: 15
 
             SidebarTextField {
-                CxFlexible.flexGrow: 1
+                Flexbox.flexGrow: 1
 
                 placeholderText: "auto"
                 text: {
@@ -27,26 +30,26 @@ ScrollView {
                         return ""
                     }
 
-                    if (currentItem.preferredWidth === "auto") {
+                    if (currentItem.Flexbox.width === "auto") {
                         return ""
                     }
 
-                    return currentItem.preferredWidth
+                    return currentItem.Flexbox.width
                 }
 
                 onTextChanged: {
                     if (currentItem) {
                         if (text === "") {
-                            currentItem.preferredWidth = undefined
+                            currentItem.Flexbox.width = undefined
                         } else {
-                            currentItem.preferredWidth = text
+                            currentItem.Flexbox.width = text
                         }
                     }
                 }
             }
 
             SidebarTextField {
-                CxFlexible.flexGrow: 1
+                Flexbox.flexGrow: 1
 
                 placeholderText: "auto"
                 text: {
@@ -54,19 +57,19 @@ ScrollView {
                         return ""
                     }
 
-                    if (currentItem.preferredHeight === "auto") {
+                    if (currentItem.Flexbox.height === "auto") {
                         return ""
                     }
 
-                    return currentItem.preferredHeight
+                    return currentItem.Flexbox.height
                 }
 
                 onTextChanged: {
                     if (currentItem) {
                         if (text === "") {
-                            currentItem.preferredHeight = undefined
+                            currentItem.Flexbox.height = undefined
                         } else {
-                            currentItem.preferredHeight = text
+                            currentItem.Flexbox.height = text
                         }
                     }
                 }
@@ -77,11 +80,12 @@ ScrollView {
             text: "MAX-WIDTH x MAX-HEIGHT"
         }
 
-        CxFlexRow {
-            columnGap: 15
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.columnGap: 15
 
             SidebarTextField {
-                CxFlexible.flexGrow: 1
+                Flexbox.flexGrow: 1
 
                 placeholderText: "none"
                 text: {
@@ -89,26 +93,26 @@ ScrollView {
                         return ""
                     }
 
-                    if (currentItem.maximumWidth === undefined) {
+                    if (currentItem.Flexbox.maximumWidth === undefined) {
                         return ""
                     }
 
-                    return currentItem.maximumWidth
+                    return currentItem.Flexbox.maximumWidth
                 }
 
                 onTextChanged: {
                     if (currentItem) {
                         if (text === "") {
-                            currentItem.maximumWidth = undefined
+                            currentItem.Flexbox.maximumWidth = undefined
                         } else {
-                            currentItem.maximumWidth = text
+                            currentItem.Flexbox.maximumWidth = text
                         }
                     }
                 }
             }
 
             SidebarTextField {
-                CxFlexible.flexGrow: 1
+                Flexbox.flexGrow: 1
 
                 placeholderText: "none"
                 text: {
@@ -116,19 +120,19 @@ ScrollView {
                         return ""
                     }
 
-                    if (currentItem.maxHeight === undefined) {
+                    if (currentItem.Flexbox.maximumHeight === undefined) {
                         return ""
                     }
 
-                    return currentItem.maxHeight
+                    return currentItem.Flexbox.maximumHeight
                 }
 
                 onTextChanged: {
                     if (currentItem) {
                         if (text === "") {
-                            currentItem.maxHeight = undefined
+                            currentItem.Flexbox.maximumHeight = undefined
                         } else {
-                            currentItem.maxHeight = text
+                            currentItem.Flexbox.maximumHeight = text
                         }
                     }
                 }
@@ -139,11 +143,12 @@ ScrollView {
             text: "MIN-WIDTH x MIN-HEIGHT"
         }
 
-        CxFlexRow {
-            columnGap: 15
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.columnGap: 15
 
             SidebarTextField {
-                CxFlexible.flexGrow: 1
+                Flexbox.flexGrow: 1
 
                 placeholderText: "0"
                 text: {
@@ -151,26 +156,26 @@ ScrollView {
                         return ""
                     }
 
-                    if (currentItem.minimumWidth === undefined) {
+                    if (currentItem.Flexbox.minimumWidth === undefined) {
                         return ""
                     }
 
-                    return currentItem.minimumWidth
+                    return currentItem.Flexbox.minimumWidth
                 }
 
                 onTextChanged: {
                     if (currentItem) {
                         if (text === "") {
-                            currentItem.minimumWidth = undefined
+                            currentItem.Flexbox.minimumWidth = undefined
                         } else {
-                            currentItem.minimumWidth = text
+                            currentItem.Flexbox.minimumWidth = text
                         }
                     }
                 }
             }
 
             SidebarTextField {
-                CxFlexible.flexGrow: 1
+                Flexbox.flexGrow: 1
 
                 placeholderText: "0"
                 text: {
@@ -178,19 +183,19 @@ ScrollView {
                         return ""
                     }
 
-                    if (currentItem.minHeight === undefined) {
+                    if (currentItem.Flexbox.minimumHeight === undefined) {
                         return ""
                     }
 
-                    return currentItem.minHeight
+                    return currentItem.Flexbox.minimumHeight
                 }
 
                 onTextChanged: {
                     if (currentItem) {
                         if (text === "") {
-                            currentItem.minHeight = undefined
+                            currentItem.Flexbox.minimumHeight = undefined
                         } else {
-                            currentItem.minHeight = text
+                            currentItem.Flexbox.minimumHeight = text
                         }
                     }
                 }
@@ -206,51 +211,56 @@ ScrollView {
             onTextChanged: {
                 if (currentItem) {
                     if (text === "") {
-                        currentItem.aspectRatio = undefined
+                        currentItem.Flexbox.aspectRatio = undefined
                     } else {
-                        currentItem.aspectRatio = text
+                        currentItem.Flexbox.aspectRatio = text
                     }
                 }
             }
         }
 
-        CxFlexRow {
-            columnGap: 10
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.columnGap: 15
 
-            marginTop: 20
+            Flexbox.topMargin: 20
 
-            justifyContent: CxFlex.JustifyCenter
+            Flexbox.justifyContent: Flexbox.JustifyCenter
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.leftPadding = undefined
+                                currentItem.Flexbox.leftPadding = undefined
                             } else {
-                                currentItem.leftPadding = text
+                                currentItem.Flexbox.leftPadding = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.topPadding = undefined
+                                currentItem.Flexbox.topPadding = undefined
                             } else {
-                                currentItem.topPadding = text
+                                currentItem.Flexbox.topPadding = text
                             }
                         }
                     }
@@ -259,32 +269,34 @@ ScrollView {
                     text: "PADDING"
                 }
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.bottomPadding = undefined
+                                currentItem.Flexbox.bottomPadding = undefined
                             } else {
-                                currentItem.bottomPadding = text
+                                currentItem.Flexbox.bottomPadding = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.rightPadding = undefined
+                                currentItem.Flexbox.rightPadding = undefined
                             } else {
-                                currentItem.rightPadding = text
+                                currentItem.Flexbox.rightPadding = text
                             }
                         }
                     }
@@ -292,44 +304,49 @@ ScrollView {
             }
         }
 
-        CxFlexRow {
-            columnGap: 10
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.columnGap: 15
 
-            marginTop: 20
+            Flexbox.topMargin: 20
 
-            justifyContent: CxFlex.JustifyCenter
+            Flexbox.justifyContent: Flexbox.JustifyCenter
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.leftBorder = undefined
+                                currentItem.Flexbox.leftBorder = undefined
                             } else {
-                                currentItem.leftBorder = text
+                                currentItem.Flexbox.leftBorder = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
-                alignItems: CxFlex.AlignCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
+                Flexbox.alignItems: Flexbox.AlignCenter
 
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.topBorder = undefined
+                                currentItem.Flexbox.topBorder = undefined
                             } else {
-                                currentItem.topBorder = text
+                                currentItem.Flexbox.topBorder = text
                             }
                         }
                     }
@@ -338,32 +355,34 @@ ScrollView {
                     text: "BORDER"
                 }
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.bottomBorder = undefined
+                                currentItem.Flexbox.bottomBorder = undefined
                             } else {
-                                currentItem.bottomBorder = text
+                                currentItem.Flexbox.bottomBorder = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.rightBorder = undefined
+                                currentItem.Flexbox.rightBorder = undefined
                             } else {
-                                currentItem.rightBorder = text
+                                currentItem.Flexbox.rightBorder = text
                             }
                         }
                     }
@@ -371,45 +390,50 @@ ScrollView {
             }
         }
 
-        CxFlexRow {
-            columnGap: 10
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.columnGap: 15
 
-            marginTop: 20
+            Flexbox.topMargin: 20
 
-            justifyContent: CxFlex.JustifyCenter
+            Flexbox.justifyContent: Flexbox.JustifyCenter
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.leftMargin = undefined
+                                currentItem.Flexbox.leftMargin = undefined
                             } else {
-                                currentItem.leftMargin = text
+                                currentItem.Flexbox.leftMargin = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.topMargin = undefined
+                                currentItem.Flexbox.topMargin = undefined
                             } else {
-                                currentItem.topMargin = text
+                                currentItem.Flexbox.topMargin = text
                             }
                         }
                     }
@@ -419,33 +443,35 @@ ScrollView {
                 }
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.bottomMargin = undefined
+                                currentItem.Flexbox.bottomMargin = undefined
                             } else {
-                                currentItem.bottomMargin = text
+                                currentItem.Flexbox.bottomMargin = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                justifyContent: CxFlex.JustifyCenter
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+
+                Flexbox.justifyContent: Flexbox.JustifyCenter
 
                 SidebarTextField {
                     enabled: currentItem && currentItem != rootItem
-                    CxFlexible.preferredWidth: 55
+                    Flexbox.width: 55
                     center: true
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.rightMargin = undefined
+                                currentItem.Flexbox.rightMargin = undefined
                             } else {
-                                currentItem.rightMargin = text
+                                currentItem.Flexbox.rightMargin = text
                             }
                         }
                     }
@@ -462,8 +488,10 @@ ScrollView {
             buttons: displayRow.children
         }
 
-        CxFlexRow {
+        Item {
             id: displayRow
+
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
 
             SidebarRadioButton {
                 radiusPosition: -1
@@ -482,7 +510,7 @@ ScrollView {
             SidebarRadioButton {
                 radiusPosition: 1
 
-                CxFlexible.marginLeft: -1
+                Flexbox.leftMargin: -1
 
                 enabled: currentItem && currentItem != rootItem
 

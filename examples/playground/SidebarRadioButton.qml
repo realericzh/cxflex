@@ -7,13 +7,13 @@ import CxFlex
 Button {
     id: control
 
-    CxFlexible.flexGrow: 1
-    CxFlexible.preferredHeight: 32
+    Flexbox.flexGrow: 1
+    Flexbox.height: 32
 
     property int radiusPosition: 0
 
-    CxFlexible.marginLeft: radiusPosition == 0 ? -1 : undefined
-    CxFlexible.marginRight: radiusPosition == 0 ? -1 : undefined
+    Flexbox.leftMargin: radiusPosition == 0 ? -1 : undefined
+    Flexbox.rightMargin: radiusPosition == 0 ? -1 : undefined
 
     z: control.checked ? 2 : control.hovered ? 1 : 0
 

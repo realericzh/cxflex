@@ -2,10 +2,10 @@ import QtQuick
 
 import CxFlex
 
-CxFlexItem {
+Item {
     id: swipeButton
 
-    flexGrow: 1
+    Flexbox.flexGrow: 1
 
     property alias text: buttonText.text
 

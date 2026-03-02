@@ -6,7 +6,7 @@ import CxFlex
 TextField {
     id: control
 
-    CxFlexible.preferredHeight: 32
+    Flexbox.height: 32
 
     property bool center: false
 

@@ -6,10 +6,10 @@ import CxFlex
 Button {
     id: control
 
-    CxFlexible.marginTop: 20
-    CxFlexible.marginBottom: 8
-    CxFlexible.preferredWidth: 152
-    CxFlexible.preferredHeight: 32
+    Flexbox.topMargin: 20
+    Flexbox.bottomMargin: 8
+    Flexbox.width: 152
+    Flexbox.height: 32
 
     property bool warning: false
 

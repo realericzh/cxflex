@@ -4,16 +4,16 @@ import QtQuick.Controls
 
 import CxFlex
 
-CxFlexColumn {
+Item {
     id: sidebar
 
-    preferredWidth: 350
-    preferredHeight: currentItem ? 428 : 108
+    Flexbox.width: 350
+    Flexbox.height: currentItem ? 428 : 108
 
-    position: CxFlex.PositionAbsolute
+    Flexbox.position: Flexbox.PositionAbsolute
 
-    positionTop: 25
-    positionRight: 25
+    Flexbox.positionTop: 25
+    Flexbox.positionRight: 25
 
     Rectangle {
         id: background
@@ -40,8 +40,10 @@ CxFlexColumn {
         shadowVerticalOffset: 3
     }
 
-    CxFlexRow {
+    Item {
         id: tabbarNode
+
+        Flexbox.flexDirection: Flexbox.FlexDirectionRow
 
         SwipeButton {
             text: "Flex"
@@ -83,15 +85,17 @@ CxFlexColumn {
             x: width * swipeView.currentIndex
         }
 
-        preferredHeight: 45
+        Flexbox.height: 45
 
         visible: currentItem != null
     }
 
-    CxFlexRow {
+    Item {
         id: swipeViewNode
 
-        flexGrow: 1
+        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+
+        Flexbox.flexGrow: 1
 
         SwipeView {
             id: swipeView
@@ -111,16 +115,18 @@ CxFlexColumn {
         visible: currentItem != null
     }
 
-    CxFlexRow {
+    Item {
         id: buttonNode
 
-        preferredHeight: 62
+        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+
+        Flexbox.height: 62
 
         visible: currentItem != null
 
-        justifyContent: CxFlex.JustifyCenter
+        Flexbox.justifyContent: Flexbox.JustifyCenter
 
-        columnGap: 15
+        Flexbox.columnGap: 15
 
         SidebarButton {
             text: "add child node"
@@ -141,9 +147,11 @@ CxFlexColumn {
         }
     }
 
-    CxFlexRow {
-        preferredWidth: "100%"
-        preferredHeight: "100%"
+    Item {
+        Flexbox.flexDirection: Flexbox.FlexDirectionRow
+
+        Flexbox.width: "100%"
+        Flexbox.height: "100%"
 
         Text {
             anchors {
@@ -171,8 +179,8 @@ CxFlexColumn {
                 NumberAnimation { duration: 250 }
             }
 
-            preferredWidth: 100
-            preferredHeight: 100
+            Flexbox.width: 100
+            Flexbox.height: 100
         }
     }
 

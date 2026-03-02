@@ -7,7 +7,7 @@ import CxFlex
 ComboBox {
     id: control
 
-    CxFlexible.preferredHeight: 32
+    Flexbox.height: 32
 
     font {
         pixelSize: 14

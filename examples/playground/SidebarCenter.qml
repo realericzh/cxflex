@@ -5,8 +5,8 @@ import CxFlex
 Text {
     id: control
 
-    CxFlexible.preferredWidth: 55
-    CxFlexible.preferredHeight: 32
+    Flexbox.width: 55
+    Flexbox.height: 32
 
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter

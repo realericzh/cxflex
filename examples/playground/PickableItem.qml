@@ -2,7 +2,7 @@ import QtQuick
 
 import CxFlex
 
-CxFlexItem {
+Item {
     id: flexNode
 
     Rectangle {

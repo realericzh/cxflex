@@ -37,7 +37,7 @@
 // - relativeChildren: Maintain a vector of the child nodes that can shrink
 //   and/or grow.
 
-struct YGCollectYogaItemsRowValues {
+struct YGCollectFlexItemsRowValues {
   uint32_t itemsOnLine;
   float sizeConsumedOnCurrentLine;
   float totalFlexGrowFactors;

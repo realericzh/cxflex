@@ -10,10 +10,10 @@ private slots:
     void testDefaults();
 };
 
-//CxFlex::Direction direction() const;
-//CxFlex::PositionType positionType() const;
-//CxFlex::Align alignSelf() const;
-//CxFlex::Overflow overflow() const;
+//Flex::Direction direction() const;
+//Flex::PositionType positionType() const;
+//Flex::Align alignSelf() const;
+//Flex::Overflow overflow() const;
 
 void Defaults::testDefaults()
 {

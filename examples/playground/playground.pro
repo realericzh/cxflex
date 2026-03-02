@@ -1,4 +1,4 @@
-QT += quick
+QT += quick quick-private
 
 SOURCES   += main.cpp
 RESOURCES += main.qrc

@@ -1,4 +1,4 @@
-QT += qml quick testlib
+QT += qml quick quick-private testlib
 
 CONFIG += qt console warn_on depend_includepath testcase
 CONFIG -= app_bundle

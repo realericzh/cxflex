@@ -5,9 +5,9 @@ import CxFlex
 Text {
     id: labelText
 
-    CxFlexible.marginTop: 20
-    CxFlexible.marginBottom: 8
-    CxFlexible.preferredHeight: 18
+    Flexbox.topMargin: 20
+    Flexbox.bottomMargin: 8
+    Flexbox.height: 18
 
     font {
         pixelSize: 12

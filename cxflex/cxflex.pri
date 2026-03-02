@@ -1,19 +1,13 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/CxFlex.h \
-    $$PWD/CxFlexItem.h \
-    $$PWD/CxFlexItem_p.h \
     $$PWD/CxFlexSettings.h \
     $$PWD/CxFlexSettings_p.h \
-    $$PWD/CxFlex_p.h \
-    $$PWD/CxFlexible.h \
-    $$PWD/CxFlexible_p.h
+    $$PWD/Flexbox.h \
+    $$PWD/Flexbox_p.h
 SOURCES += \
-    $$PWD/CxFlex.cpp \
-    $$PWD/CxFlexItem.cpp \
     $$PWD/CxFlexSettings.cpp \
-    $$PWD/CxFlexible.cpp
+    $$PWD/Flexbox.cpp
 
 HEADERS += \
     $$PWD/yoga/BitUtils.h \

@@ -6,10 +6,12 @@ import CxFlex
 ScrollView {
     id: scrollView
 
-    CxFlexColumn {
-        width: scrollView.width - 15
+    Item {
+        Flexbox.flexDirection: Flexbox.FlexDirectionColumn
 
-        padding: 15
+        Flexbox.padding: 15
+
+        width: scrollView.width - 15
 
         SidebarLabel {
             text: "DIRECTION"
@@ -20,17 +22,19 @@ ScrollView {
             buttons: directionRow.children
         }
 
-        CxFlexRow {
+        Item {
             id: directionRow
+
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
 
             SidebarRadioButton {
                 radiusPosition: -1
 
                 text: "inherit"
-                checked: currentItem && currentItem.direction === CxFlex.DirectionInherit
+                checked: currentItem && currentItem.Flexbox.direction === Flexbox.DirectionInherit
                 onClicked: {
                     if (currentItem) {
-                        currentItem.direction = CxFlex.DirectionInherit
+                        currentItem.Flexbox.direction = Flexbox.DirectionInherit
                     }
                 }
             }
@@ -39,10 +43,10 @@ ScrollView {
                 radiusPosition: 0
 
                 text: "ltr"
-                checked: currentItem && currentItem.direction === CxFlex.DirectionLTR
+                checked: currentItem && currentItem.Flexbox.direction === Flexbox.DirectionLTR
                 onClicked: {
                     if (currentItem) {
-                        currentItem.direction = CxFlex.DirectionLTR
+                        currentItem.Flexbox.direction = Flexbox.DirectionLTR
                     }
                 }
             }
@@ -51,10 +55,10 @@ ScrollView {
                 radiusPosition: 1
 
                 text: "rtl"
-                checked: currentItem && currentItem.direction === CxFlex.DirectionRTL
+                checked: currentItem && currentItem.Flexbox.direction === Flexbox.DirectionRTL
                 onClicked: {
                     if (currentItem) {
-                        currentItem.direction = CxFlex.DirectionRTL
+                        currentItem.Flexbox.direction = Flexbox.DirectionRTL
                     }
                 }
             }
@@ -77,14 +81,14 @@ ScrollView {
                     return 0
                 }
 
-                switch (currentItem.flexDirection) {
-                case CxFlex.FlexDirectionColumn:
+                switch (currentItem.Flexbox.flexDirection) {
+                case Flexbox.FlexDirectionColumn:
                     return 0
-                case CxFlex.FlexDirectionColumnReverse:
+                case Flexbox.FlexDirectionColumnReverse:
                     return 1
-                case CxFlex.FlexDirectionRow:
+                case Flexbox.FlexDirectionRow:
                     return 2
-                case CxFlex.FlexDirectionRowReverse:
+                case Flexbox.FlexDirectionRowReverse:
                     return 3
                 }
 
@@ -95,27 +99,29 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.flexDirection = CxFlex.FlexDirectionColumn
+                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionColumn
                         break
                     case 1:
-                        currentItem.flexDirection = CxFlex.FlexDirectionColumnReverse
+                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionColumnReverse
                         break
                     case 2:
-                        currentItem.flexDirection = CxFlex.FlexDirectionRow
+                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionRow
                         break
                     case 3:
-                        currentItem.flexDirection = CxFlex.FlexDirectionRowReverse
+                        currentItem.Flexbox.flexDirection = Flexbox.FlexDirectionRowReverse
                         break
                     }
                 }
             }
         }
 
-        CxFlexRow {
-            gap: 15
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.gap: 15
 
-            CxFlexColumn {
-                flexGrow: 1
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexGrow: 1
 
                 SidebarLabel {
                     text: "BASIS"
@@ -127,17 +133,18 @@ ScrollView {
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.flexBasis = undefined
+                                currentItem.Flexbox.flexBasis = undefined
                             } else {
-                                currentItem.flexBasis = text
+                                currentItem.Flexbox.flexBasis = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                flexGrow: 1
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexGrow: 1
 
                 SidebarLabel {
                     text: "GROW"
@@ -149,17 +156,18 @@ ScrollView {
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.flexGrow = undefined
+                                currentItem.Flexbox.flexGrow = undefined
                             } else {
-                                currentItem.flexGrow = text
+                                currentItem.Flexbox.flexGrow = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                flexGrow: 1
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexGrow: 1
 
                 SidebarLabel {
                     text: "SHRINK"
@@ -171,9 +179,9 @@ ScrollView {
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.flexShrink = undefined
+                                currentItem.Flexbox.flexShrink = undefined
                             } else {
-                                currentItem.flexShrink = text
+                                currentItem.Flexbox.flexShrink = text
                             }
                         }
                     }
@@ -190,17 +198,19 @@ ScrollView {
             buttons: flexWrapRow.children
         }
 
-        CxFlexRow {
+        Item {
             id: flexWrapRow
+
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
 
             SidebarRadioButton {
                 radiusPosition: -1
 
                 text: "no wrap"
-                checked: currentItem && currentItem.flexWrap === CxFlex.WrapNoWrap
+                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapNoWrap
                 onClicked: {
                     if (currentItem) {
-                        currentItem.flexWrap = CxFlex.WrapNoWrap
+                        currentItem.Flexbox.flexWrap = Flexbox.WrapNoWrap
                     }
                 }
             }
@@ -209,10 +219,10 @@ ScrollView {
                 radiusPosition: 0
 
                 text: "wrap"
-                checked: currentItem && currentItem.flexWrap === CxFlex.WrapWrap
+                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapWrap
                 onClicked: {
                     if (currentItem) {
-                        currentItem.flexWrap = CxFlex.WrapWrap
+                        currentItem.Flexbox.flexWrap = Flexbox.WrapWrap
                     }
                 }
             }
@@ -221,20 +231,22 @@ ScrollView {
                 radiusPosition: 1
 
                 text: "wrap reverse"
-                checked: currentItem && currentItem.flexWrap === CxFlex.WrapWrapReverse
+                checked: currentItem && currentItem.Flexbox.flexWrap === Flexbox.WrapWrapReverse
                 onClicked: {
                     if (currentItem) {
-                        currentItem.flexWrap = CxFlex.WrapWrapReverse
+                        currentItem.Flexbox.flexWrap = Flexbox.WrapWrapReverse
                     }
                 }
             }
         }
 
-        CxFlexRow {
-            gap: 15
+        Item {
+            Flexbox.flexDirection: Flexbox.FlexDirectionRow
+            Flexbox.gap: 15
 
-            CxFlexColumn {
-                flexGrow: 1
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexGrow: 1
 
                 SidebarLabel {
                     text: "GAP"
@@ -245,17 +257,18 @@ ScrollView {
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.gap = undefined
+                                currentItem.Flexbox.gap = undefined
                             } else {
-                                currentItem.gap = text
+                                currentItem.Flexbox.gap = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                flexGrow: 1
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexGrow: 1
 
                 SidebarLabel {
                     text: "ROW-GAP"
@@ -266,17 +279,18 @@ ScrollView {
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.rowGap = undefined
+                                currentItem.Flexbox.rowGap = undefined
                             } else {
-                                currentItem.rowGap = text
+                                currentItem.Flexbox.rowGap = text
                             }
                         }
                     }
                 }
             }
 
-            CxFlexColumn {
-                flexGrow: 1
+            Item {
+                Flexbox.flexDirection: Flexbox.FlexDirectionColumn
+                Flexbox.flexGrow: 1
 
                 SidebarLabel {
                     text: "COLUMN-GAP"
@@ -287,9 +301,9 @@ ScrollView {
                     onTextChanged: {
                         if (currentItem) {
                             if (text === "") {
-                                currentItem.columnGap = undefined
+                                currentItem.Flexbox.columnGap = undefined
                             } else {
-                                currentItem.columnGap = text
+                                currentItem.Flexbox.columnGap = text
                             }
                         }
                     }
