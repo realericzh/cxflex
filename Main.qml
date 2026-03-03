@@ -1,6 +1,5 @@
 import QtQuick
-import QtQuick.Effects
-import QtQuick.Controls
+import QtQuick.Layouts
 
 import Flexbox
 
@@ -9,60 +8,103 @@ Window {
     height: 800
     visible: true
     title: qsTr("Playground")
-    color: "#f3f3f3"
-
-    property var currentItem: null
-
-    property alias rootItem: rootItem2
-
-    MouseArea {
-        anchors {
-            fill: parent
-        }
-
-        onClicked: {
-            currentItem = null
-        }
-    }
+    color: "#ffffff"
 
     Item {
-        anchors {
-            fill: parent
-        }
+        anchors.fill: parent
 
         Flexbox.flexDirection: Flexbox.Row
 
-        Item {
-            Flexbox.justifyContent: Flexbox.Center
-            Flexbox.alignItems: Flexbox.Center
+        Item { // sidebar -->
+            id: sidebar
 
-            Flexbox.leftMargin: -175
-            Flexbox.rightMargin: 175
+            Flexbox.width: 300
 
-            Flexbox.flexGrow: 1
+            Column {
+                Repeater {
+                    model: ListModel {
+                        ListElement { displayText: "Playground" }
+                        ListElement { displayText: "Align Content" }
+                        ListElement { displayText: "Align Items" }
+                        ListElement { displayText: "Aspect Ratio" }
+                        ListElement { displayText: "Display" }
+                        ListElement { displayText: "Flex Basis, Grow, and Shrink" }
+                        ListElement { displayText: "Flex Direction" }
+                        ListElement { displayText: "Flex Wrap" }
+                        ListElement { displayText: "Gaps" }
+                        ListElement { displayText: "Insets" }
+                        ListElement { displayText: "Justify Content" }
+                        ListElement { displayText: "Layout Direction" }
+                        ListElement { displayText: "Margin, Padding, and Border" }
+                        ListElement { displayText: "Position" }
+                        ListElement { displayText: "Min/Max Width and Height" }
+                        ListElement { displayText: "Width and Height" }
+                    }
+                    delegate: Item {
+                        width: sidebar.width
 
-            MultiEffect {
-                anchors {
-                    fill: rootItem2
+                        height: 50
+
+                        Text {
+                            anchors {
+                                centerIn: parent
+                            }
+
+                            text: displayText
+
+                            color: stackLayout.currentIndex === index ? "#6bcebb" : "#444950"
+
+                            font.pixelSize: 16
+                            font.bold: true
+                        }
+
+                        MouseArea {
+                            anchors {
+                                fill: parent
+                            }
+
+                            onClicked: {
+                                stackLayout.currentIndex = index;
+                            }
+                        }
+                    }
                 }
-
-                source: rootItem2
-
-                shadowEnabled: true
-                shadowColor: "#000000"
-                shadowOpacity: 0.2
-                shadowHorizontalOffset: 3
-                shadowVerticalOffset: 3
             }
+        } // <-- sidebar
 
-            PickableItem {
-                id: rootItem2
+        Rectangle {
+            Flexbox.width: 1
 
-                Flexbox.width: 500
-                Flexbox.height: 500
-            }
+            color: "#d9d9d9"
         }
 
-        Sidebar { }
+        Item { // content -->
+            Flexbox.flexGrow: 1
+
+            StackLayout {
+                id: stackLayout
+                anchors {
+                    fill: parent
+                }
+
+                Playground { }
+
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/AlignContentView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/AlignItemsView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/AspectRatioView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/DisplayView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/FlexBasisGrowShrinkView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/FlexDirectionView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/FlexWrapView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/GapView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/InsetsView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/JustifyContentView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/LayoutDirectionView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/MarginPaddingBorderView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/PositionView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/MinMaxWidthHeightView.qml" : "" }
+                Loader { source: visible ? "qrc:///qt/qml/Flexbox/Styling/WidthHeightView.qml" : "" }
+            }
+        } // <-- content
     }
 }

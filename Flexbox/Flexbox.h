@@ -19,7 +19,7 @@ public:
     static FlexboxAttached *qmlAttachedProperties(QObject *attachee);
 
 public:
-    enum Generic {
+    enum Value {
         // Align
         Auto,
         FlexStart,
@@ -74,7 +74,7 @@ public:
         Wrap,
         WrapReverse,
     };
-    Q_ENUM(Generic)
+    Q_ENUM(Value)
 };
 
 // class FlexboxAttached
@@ -85,18 +85,18 @@ class FlexboxAttached : public QObject
     Q_OBJECT
     Q_DECLARE_PRIVATE(FlexboxAttached)
 
-    Q_PROPERTY(Flexbox::Generic direction READ direction WRITE setDirection NOTIFY directionChanged)
-    Q_PROPERTY(Flexbox::Generic position READ position WRITE setPosition NOTIFY positionChanged)
-    Q_PROPERTY(Flexbox::Generic display READ display WRITE setDisplay NOTIFY displayChanged)
-    Q_PROPERTY(Flexbox::Generic overflow READ overflow WRITE setOverflow NOTIFY overflowChanged)
-    Q_PROPERTY(Flexbox::Generic boxSizing READ boxSizing WRITE setBoxSizing NOTIFY boxSizingChanged)
+    Q_PROPERTY(Flexbox::Value direction READ direction WRITE setDirection NOTIFY directionChanged)
+    Q_PROPERTY(Flexbox::Value position READ position WRITE setPosition NOTIFY positionChanged)
+    Q_PROPERTY(Flexbox::Value display READ display WRITE setDisplay NOTIFY displayChanged)
+    Q_PROPERTY(Flexbox::Value overflow READ overflow WRITE setOverflow NOTIFY overflowChanged)
+    Q_PROPERTY(Flexbox::Value boxSizing READ boxSizing WRITE setBoxSizing NOTIFY boxSizingChanged)
 
-    Q_PROPERTY(Flexbox::Generic justifyContent READ justifyContent WRITE setJustifyContent NOTIFY justifyContentChanged)
-    Q_PROPERTY(Flexbox::Generic flexDirection READ flexDirection WRITE setFlexDirection NOTIFY flexDirectionChanged)
-    Q_PROPERTY(Flexbox::Generic alignContent READ alignContent WRITE setAlignContent NOTIFY alignContentChanged)
-    Q_PROPERTY(Flexbox::Generic alignItems READ alignItems WRITE setAlignItems NOTIFY alignItemsChanged)
-    Q_PROPERTY(Flexbox::Generic alignSelf READ alignSelf WRITE setAlignSelf NOTIFY alignSelfChanged)
-    Q_PROPERTY(Flexbox::Generic flexWrap READ flexWrap WRITE setFlexWrap NOTIFY flexWrapChanged)
+    Q_PROPERTY(Flexbox::Value justifyContent READ justifyContent WRITE setJustifyContent NOTIFY justifyContentChanged)
+    Q_PROPERTY(Flexbox::Value flexDirection READ flexDirection WRITE setFlexDirection NOTIFY flexDirectionChanged)
+    Q_PROPERTY(Flexbox::Value alignContent READ alignContent WRITE setAlignContent NOTIFY alignContentChanged)
+    Q_PROPERTY(Flexbox::Value alignItems READ alignItems WRITE setAlignItems NOTIFY alignItemsChanged)
+    Q_PROPERTY(Flexbox::Value alignSelf READ alignSelf WRITE setAlignSelf NOTIFY alignSelfChanged)
+    Q_PROPERTY(Flexbox::Value flexWrap READ flexWrap WRITE setFlexWrap NOTIFY flexWrapChanged)
 
     Q_PROPERTY(QJSValue left READ left WRITE setLeft NOTIFY leftChanged)
     Q_PROPERTY(QJSValue top READ top WRITE setTop NOTIFY topChanged)
@@ -121,7 +121,7 @@ class FlexboxAttached : public QObject
     Q_PROPERTY(QJSValue endMargin READ endMargin WRITE setEndMargin NOTIFY endMarginChanged)
     Q_PROPERTY(QJSValue horizontalMargin READ horizontalMargin WRITE setHorizontalMargin NOTIFY horizontalMarginChanged)
     Q_PROPERTY(QJSValue verticalMargin READ verticalMargin WRITE setVerticalMargin NOTIFY verticalMarginChanged)
-    Q_PROPERTY(QJSValue margins READ margins WRITE setMargins NOTIFY marginsChanged)
+    Q_PROPERTY(QJSValue margin READ margin WRITE setMargin NOTIFY marginChanged)
 
     Q_PROPERTY(QJSValue leftPadding READ leftPadding WRITE setLeftPadding NOTIFY leftPaddingChanged)
     Q_PROPERTY(QJSValue topPadding READ topPadding WRITE setTopPadding NOTIFY topPaddingChanged)
@@ -141,7 +141,7 @@ class FlexboxAttached : public QObject
     Q_PROPERTY(QJSValue endBorder READ endBorder WRITE setEndBorder NOTIFY endBorderChanged)
     Q_PROPERTY(QJSValue horizontalBorder READ horizontalBorder WRITE setHorizontalBorder NOTIFY horizontalBorderChanged)
     Q_PROPERTY(QJSValue verticalBorder READ verticalBorder WRITE setVerticalBorder NOTIFY verticalBorderChanged)
-    Q_PROPERTY(QJSValue borders READ borders WRITE setBorders NOTIFY bordersChanged)
+    Q_PROPERTY(QJSValue border READ border WRITE setBorder NOTIFY borderChanged)
 
     Q_PROPERTY(QJSValue columnGap READ columnGap WRITE setColumnGap NOTIFY columnGapChanged)
     Q_PROPERTY(QJSValue rowGap READ rowGap WRITE setRowGap NOTIFY rowGapChanged)
@@ -167,17 +167,17 @@ signals:
     void overflowChanged();
     void boxSizingChanged();
 public:
-    void setDirection(Flexbox::Generic value);
-    void setPosition(Flexbox::Generic value);
-    void setDisplay(Flexbox::Generic value);
-    void setOverflow(Flexbox::Generic value);
-    void setBoxSizing(Flexbox::Generic value);
+    void setDirection(Flexbox::Value value);
+    void setPosition(Flexbox::Value value);
+    void setDisplay(Flexbox::Value value);
+    void setOverflow(Flexbox::Value value);
+    void setBoxSizing(Flexbox::Value value);
 public:
-    Flexbox::Generic direction() const;
-    Flexbox::Generic position() const;
-    Flexbox::Generic display() const;
-    Flexbox::Generic overflow() const;
-    Flexbox::Generic boxSizing() const;
+    Flexbox::Value direction() const;
+    Flexbox::Value position() const;
+    Flexbox::Value display() const;
+    Flexbox::Value overflow() const;
+    Flexbox::Value boxSizing() const;
 
 signals:
     void justifyContentChanged();
@@ -187,19 +187,19 @@ signals:
     void alignSelfChanged();
     void flexWrapChanged();
 public:
-    void setJustifyContent(Flexbox::Generic value);
-    void setFlexDirection(Flexbox::Generic value);
-    void setAlignContent(Flexbox::Generic value);
-    void setAlignItems(Flexbox::Generic value);
-    void setAlignSelf(Flexbox::Generic value);
-    void setFlexWrap(Flexbox::Generic value);
+    void setJustifyContent(Flexbox::Value value);
+    void setFlexDirection(Flexbox::Value value);
+    void setAlignContent(Flexbox::Value value);
+    void setAlignItems(Flexbox::Value value);
+    void setAlignSelf(Flexbox::Value value);
+    void setFlexWrap(Flexbox::Value value);
 public:
-    Flexbox::Generic justifyContent() const;
-    Flexbox::Generic flexDirection() const;
-    Flexbox::Generic alignContent() const;
-    Flexbox::Generic alignItems() const;
-    Flexbox::Generic alignSelf() const;
-    Flexbox::Generic flexWrap() const;
+    Flexbox::Value justifyContent() const;
+    Flexbox::Value flexDirection() const;
+    Flexbox::Value alignContent() const;
+    Flexbox::Value alignItems() const;
+    Flexbox::Value alignSelf() const;
+    Flexbox::Value flexWrap() const;
 
 signals:
     void leftChanged();
@@ -258,7 +258,7 @@ signals:
     void endMarginChanged();
     void horizontalMarginChanged();
     void verticalMarginChanged();
-    void marginsChanged();
+    void marginChanged();
 public:
     void setLeftMargin(QJSValue value);
     void setTopMargin(QJSValue value);
@@ -268,7 +268,7 @@ public:
     void setEndMargin(QJSValue value);
     void setHorizontalMargin(QJSValue value);
     void setVerticalMargin(QJSValue value);
-    void setMargins(QJSValue value);
+    void setMargin(QJSValue value);
 public:
     QJSValue leftMargin() const;
     QJSValue topMargin() const;
@@ -278,7 +278,7 @@ public:
     QJSValue endMargin() const;
     QJSValue horizontalMargin() const;
     QJSValue verticalMargin() const;
-    QJSValue margins() const;
+    QJSValue margin() const;
 
 signals:
     void leftPaddingChanged();
@@ -320,7 +320,7 @@ signals:
     void endBorderChanged();
     void horizontalBorderChanged();
     void verticalBorderChanged();
-    void bordersChanged();
+    void borderChanged();
 public:
     void setLeftBorder(QJSValue value);
     void setTopBorder(QJSValue value);
@@ -330,7 +330,7 @@ public:
     void setEndBorder(QJSValue value);
     void setHorizontalBorder(QJSValue value);
     void setVerticalBorder(QJSValue value);
-    void setBorders(QJSValue value);
+    void setBorder(QJSValue value);
 public:
     QJSValue leftBorder() const;
     QJSValue topBorder() const;
@@ -340,7 +340,7 @@ public:
     QJSValue endBorder() const;
     QJSValue horizontalBorder() const;
     QJSValue verticalBorder() const;
-    QJSValue borders() const;
+    QJSValue border() const;
 
 signals:
     void columnGapChanged();
@@ -377,6 +377,16 @@ public:
     void setAspectRatio(QJSValue value);
 public:
     QJSValue aspectRatio() const;
+
+signals:
+    void autoDisplayChanged();
+public:
+    void setAutoDisplay(bool yes);
+public:
+    bool isAutoDisplay() const;
+
+protected:
+    void timerEvent(QTimerEvent *) final;
 };
 
 #endif // REALERICZH_FLEXBOX_H

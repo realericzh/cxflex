@@ -22,6 +22,8 @@ protected:
 protected:
     void buildLayout();
     void applyLayout();
+protected:
+    int dirtyTimer = 0;
 
 protected:
     void setPosition(YGEdge edge, QJSValue value);
@@ -51,6 +53,11 @@ protected:
     };
 protected:
     SizeType sizeType = UnknownSize;
+
+protected:
+    void updateDisplay();
+protected:
+    bool autoDisplay = true;
 };
 
 #endif // REALERICZH_FLEXBOX_P_H

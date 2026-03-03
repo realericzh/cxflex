@@ -82,14 +82,11 @@ ScrollView {
 
         SidebarComboBox {
             model: ListModel {
-                ListElement { elementText: "auto" }
                 ListElement { elementText: "flex start" }
                 ListElement { elementText: "center" }
                 ListElement { elementText: "flex end" }
                 ListElement { elementText: "stretch" }
                 ListElement { elementText: "baseline" }
-                ListElement { elementText: "space between" }
-                ListElement { elementText: "space around" }
             }
 
             currentIndex: {
@@ -98,22 +95,16 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.alignItems) {
-                case Flexbox.Auto:
-                    return 0
                 case Flexbox.FlexStart:
-                    return 1
+                    return 0
                 case Flexbox.Center:
-                    return 2
+                    return 1
                 case Flexbox.FlexEnd:
-                    return 3
+                    return 2
                 case Flexbox.Stretch:
-                    return 4
+                    return 3
                 case Flexbox.Baseline:
-                    return 5
-                case Flexbox.SpaceBetween:
-                    return 6
-                case Flexbox.SpaceAround:
-                    return 7
+                    return 4
                 }
 
                 return 0
@@ -123,28 +114,19 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.alignItems = Flexbox.Auto
-                        break
-                    case 1:
                         currentItem.Flexbox.alignItems = Flexbox.FlexStart
                         break
-                    case 2:
+                    case 1:
                         currentItem.Flexbox.alignItems = Flexbox.Center
                         break
-                    case 3:
+                    case 2:
                         currentItem.Flexbox.alignItems = Flexbox.FlexEnd
                         break
-                    case 4:
+                    case 3:
                         currentItem.Flexbox.alignItems = Flexbox.Stretch
                         break
-                    case 5:
+                    case 4:
                         currentItem.Flexbox.alignItems = Flexbox.Baseline
-                        break
-                    case 6:
-                        currentItem.Flexbox.alignItems = Flexbox.SpaceBetween
-                        break
-                    case 7:
-                        currentItem.Flexbox.alignItems = Flexbox.SpaceAround
                         break
                     }
                 }
@@ -165,8 +147,6 @@ ScrollView {
                 ListElement { elementText: "flex end" }
                 ListElement { elementText: "stretch" }
                 ListElement { elementText: "baseline" }
-                ListElement { elementText: "space between" }
-                ListElement { elementText: "space around" }
             }
 
             currentIndex: {
@@ -187,10 +167,6 @@ ScrollView {
                     return 4
                 case Flexbox.Baseline:
                     return 5
-                case Flexbox.SpaceBetween:
-                    return 6
-                case Flexbox.SpaceAround:
-                    return 7
                 }
 
                 return 0
@@ -217,12 +193,6 @@ ScrollView {
                     case 5:
                         currentItem.Flexbox.alignSelf = Flexbox.Baseline
                         break
-                    case 6:
-                        currentItem.Flexbox.alignSelf = Flexbox.SpaceBetween
-                        break
-                    case 7:
-                        currentItem.Flexbox.alignSelf = Flexbox.SpaceAround
-                        break
                     }
                 }
             }
@@ -234,14 +204,13 @@ ScrollView {
 
         SidebarComboBox {
             model: ListModel {
-                ListElement { elementText: "auto" }
                 ListElement { elementText: "flex start" }
                 ListElement { elementText: "center" }
                 ListElement { elementText: "flex end" }
                 ListElement { elementText: "stretch" }
-                ListElement { elementText: "baseline" }
                 ListElement { elementText: "space between" }
                 ListElement { elementText: "space around" }
+                ListElement { elementText: "space evenly" }
             }
 
             currentIndex: {
@@ -250,22 +219,20 @@ ScrollView {
                 }
 
                 switch (currentItem.Flexbox.alignContent) {
-                case Flexbox.Auto:
-                    return 0
                 case Flexbox.FlexStart:
-                    return 1
+                    return 0
                 case Flexbox.Center:
-                    return 2
+                    return 1
                 case Flexbox.FlexEnd:
-                    return 3
+                    return 2
                 case Flexbox.Stretch:
-                    return 4
-                case Flexbox.Baseline:
-                    return 5
+                    return 3
                 case Flexbox.SpaceBetween:
-                    return 6
+                    return 4
                 case Flexbox.SpaceAround:
-                    return 7
+                    return 5
+                case Flexbox.SpaceEvenly:
+                    return 6
                 }
 
                 return 0
@@ -275,28 +242,25 @@ ScrollView {
                 if (currentItem) {
                     switch (currentIndex) {
                     case 0:
-                        currentItem.Flexbox.alignContent = Flexbox.Auto
-                        break
-                    case 1:
                         currentItem.Flexbox.alignContent = Flexbox.FlexStart
                         break
-                    case 2:
+                    case 1:
                         currentItem.Flexbox.alignContent = Flexbox.Center
                         break
-                    case 3:
+                    case 2:
                         currentItem.Flexbox.alignContent = Flexbox.FlexEnd
                         break
-                    case 4:
+                    case 3:
                         currentItem.Flexbox.alignContent = Flexbox.Stretch
                         break
-                    case 5:
-                        currentItem.Flexbox.alignContent = Flexbox.Baseline
-                        break
-                    case 6:
+                    case 4:
                         currentItem.Flexbox.alignContent = Flexbox.SpaceBetween
                         break
-                    case 7:
+                    case 5:
                         currentItem.Flexbox.alignContent = Flexbox.SpaceAround
+                        break
+                    case 6:
+                        currentItem.Flexbox.alignContent = Flexbox.SpaceEvenly
                         break
                     }
                 }

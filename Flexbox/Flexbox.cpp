@@ -39,6 +39,186 @@ inline QJSValue toJSValue(float value)
     return {};
 }
 
+template<typename ValueSetter, typename PercentValueSetter, typename AutoValueSetter>
+void setValue(YGNodeRef node, QJSValue value, ValueSetter valueSetter, PercentValueSetter percentValueSetter, AutoValueSetter autoValueSetter)
+{
+    if (value.isUndefined()) {
+        valueSetter(node, YGUndefined);
+    } else if (value.isNumber()) {
+        valueSetter(node, value.toNumber());
+    } else if (value.isString()) {
+        QString valueArgument = value.toString();
+        if (valueArgument == QStringLiteral("auto")) {
+            autoValueSetter(node);
+            return;
+        }
+
+        bool percent = false;
+        if (valueArgument.endsWith('%')) {
+            valueArgument.chop(1);
+            percent = true;
+        }
+
+        bool ok = false;
+        const float valueResult = valueArgument.toFloat(&ok);
+        if (ok) {
+            if (percent) {
+                percentValueSetter(node, valueResult);
+            } else {
+                valueSetter(node, valueResult);
+            }
+        } else {
+            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
+        }
+    } else {
+        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
+    }
+}
+
+template<typename ValueSetter, typename PercentValueSetter>
+void setValue(YGNodeRef node, QJSValue value, ValueSetter valueSetter, PercentValueSetter percentValueSetter)
+{
+    if (value.isUndefined()) {
+        valueSetter(node, YGUndefined);
+    } else if (value.isNumber()) {
+        valueSetter(node, value.toNumber());
+    } else if (value.isString()) {
+        QString valueArgument = value.toString();
+
+        bool percent = false;
+        if (valueArgument.endsWith('%')) {
+            valueArgument.chop(1);
+            percent = true;
+        }
+
+        bool ok = false;
+        const float valueResult = valueArgument.toFloat(&ok);
+        if (ok) {
+            if (percent) {
+                percentValueSetter(node, valueResult);
+            } else {
+                valueSetter(node, valueResult);
+            }
+        } else {
+            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
+        }
+    } else {
+        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
+    }
+}
+
+template<typename ValueSetter>
+void setValue(YGNodeRef node, QJSValue value, ValueSetter valueSetter)
+{
+    if (value.isUndefined()) {
+        valueSetter(node, YGUndefined);
+    } else if (value.isNumber()) {
+        valueSetter(node, value.toNumber());
+    } else if (value.isString()) {
+        QString valueArgument = value.toString();
+
+        bool ok = false;
+        const float valueResult = valueArgument.toFloat(&ok);
+        if (ok) {
+            valueSetter(node, valueResult);
+        } else {
+            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
+        }
+    } else {
+        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
+    }
+}
+
+template<typename P2, typename ValueSetter, typename PercentValueSetter, typename AutoValueSetter>
+void setValue(YGNodeRef node, P2 p2, QJSValue value, ValueSetter valueSetter, PercentValueSetter percentValueSetter, AutoValueSetter autoValueSetter)
+{
+    if (value.isUndefined()) {
+        valueSetter(node, p2, YGUndefined);
+    } else if (value.isNumber()) {
+        valueSetter(node, p2, value.toNumber());
+    } else if (value.isString()) {
+        QString valueArgument = value.toString();
+        if (valueArgument == QStringLiteral("auto")) {
+            autoValueSetter(node, p2);
+            return;
+        }
+
+        bool percent = false;
+        if (valueArgument.endsWith('%')) {
+            valueArgument.chop(1);
+            percent = true;
+        }
+
+        bool ok = false;
+        const float valueResult = valueArgument.toFloat(&ok);
+        if (ok) {
+            if (percent) {
+                percentValueSetter(node, p2, valueResult);
+            } else {
+                valueSetter(node, p2, valueResult);
+            }
+        } else {
+            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
+        }
+    } else {
+        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
+    }
+}
+
+template<typename P2, typename ValueSetter, typename PercentValueSetter>
+void setValue(YGNodeRef node, P2 p2, QJSValue value, ValueSetter valueSetter, PercentValueSetter percentValueSetter)
+{
+    if (value.isUndefined()) {
+        valueSetter(node, p2, YGUndefined);
+    } else if (value.isNumber()) {
+        valueSetter(node, p2, value.toNumber());
+    } else if (value.isString()) {
+        QString valueArgument = value.toString();
+
+        bool percent = false;
+        if (valueArgument.endsWith('%')) {
+            valueArgument.chop(1);
+            percent = true;
+        }
+
+        bool ok = false;
+        const float valueResult = valueArgument.toFloat(&ok);
+        if (ok) {
+            if (percent) {
+                percentValueSetter(node, p2, valueResult);
+            } else {
+                valueSetter(node, p2, valueResult);
+            }
+        } else {
+            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
+        }
+    } else {
+        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
+    }
+}
+
+template<typename P2, typename ValueSetter>
+void setValue(YGNodeRef node, P2 p2, QJSValue value, ValueSetter valueSetter)
+{
+    if (value.isUndefined()) {
+        valueSetter(node, p2, YGUndefined);
+    } else if (value.isNumber()) {
+        valueSetter(node, p2, value.toNumber());
+    } else if (value.isString()) {
+        QString valueArgument = value.toString();
+
+        bool ok = false;
+        const float valueResult = valueArgument.toFloat(&ok);
+        if (ok) {
+            valueSetter(node, p2, valueResult);
+        } else {
+            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
+        }
+    } else {
+        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
+    }
+}
+
 } // namespace FlexboxInlines
 
 // class Flexbox
@@ -105,7 +285,7 @@ FlexboxAttached::~FlexboxAttached()
     }
 }
 
-void FlexboxAttached::setDirection(Flexbox::Generic value)
+void FlexboxAttached::setDirection(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/layout-direction
 
@@ -134,7 +314,7 @@ void FlexboxAttached::setDirection(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setPosition(Flexbox::Generic value)
+void FlexboxAttached::setPosition(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/position
 
@@ -163,7 +343,7 @@ void FlexboxAttached::setPosition(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setDisplay(Flexbox::Generic value)
+void FlexboxAttached::setDisplay(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/display
 
@@ -192,7 +372,7 @@ void FlexboxAttached::setDisplay(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setOverflow(Flexbox::Generic value)
+void FlexboxAttached::setOverflow(Flexbox::Value value)
 {
     // no document
 
@@ -221,7 +401,7 @@ void FlexboxAttached::setOverflow(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setBoxSizing(Flexbox::Generic value)
+void FlexboxAttached::setBoxSizing(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/blog/announcing-yoga-3.2
 
@@ -247,7 +427,7 @@ void FlexboxAttached::setBoxSizing(Flexbox::Generic value)
     }
 }
 
-Flexbox::Generic FlexboxAttached::direction() const
+Flexbox::Value FlexboxAttached::direction() const
 {
     switch (YGNodeStyleGetDirection(d_func()->node)) {
     case YGDirectionInherit:
@@ -261,7 +441,7 @@ Flexbox::Generic FlexboxAttached::direction() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::position() const
+Flexbox::Value FlexboxAttached::position() const
 {
     switch (YGNodeStyleGetPositionType(d_func()->node)) {
     case YGPositionTypeStatic:
@@ -275,7 +455,7 @@ Flexbox::Generic FlexboxAttached::position() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::display() const
+Flexbox::Value FlexboxAttached::display() const
 {
     switch (YGNodeStyleGetDisplay(d_func()->node)) {
     case YGDisplayFlex:
@@ -289,7 +469,7 @@ Flexbox::Generic FlexboxAttached::display() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::overflow() const
+Flexbox::Value FlexboxAttached::overflow() const
 {
     switch (YGNodeStyleGetOverflow(d_func()->node)) {
     case YGOverflowVisible:
@@ -303,7 +483,7 @@ Flexbox::Generic FlexboxAttached::overflow() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::boxSizing() const
+Flexbox::Value FlexboxAttached::boxSizing() const
 {
     switch (YGNodeStyleGetBoxSizing(d_func()->node)) {
     case YGBoxSizingBorderBox:
@@ -315,7 +495,7 @@ Flexbox::Generic FlexboxAttached::boxSizing() const
     }
 }
 
-void FlexboxAttached::setJustifyContent(Flexbox::Generic value)
+void FlexboxAttached::setJustifyContent(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/justify-content
 
@@ -353,7 +533,7 @@ void FlexboxAttached::setJustifyContent(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setFlexDirection(Flexbox::Generic value)
+void FlexboxAttached::setFlexDirection(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/flex-direction
 
@@ -385,7 +565,7 @@ void FlexboxAttached::setFlexDirection(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setAlignContent(Flexbox::Generic value)
+void FlexboxAttached::setAlignContent(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/align-content
 
@@ -394,9 +574,6 @@ void FlexboxAttached::setAlignContent(Flexbox::Generic value)
     const auto oldValue = YGNodeStyleGetAlignContent(d->node);
 
     switch (value) {
-    case Flexbox::Auto:
-        YGNodeStyleSetAlignContent(d->node, YGAlignAuto);
-        break;
     case Flexbox::FlexStart:
         YGNodeStyleSetAlignContent(d->node, YGAlignFlexStart);
         break;
@@ -408,9 +585,6 @@ void FlexboxAttached::setAlignContent(Flexbox::Generic value)
         break;
     case Flexbox::Stretch:
         YGNodeStyleSetAlignContent(d->node, YGAlignStretch);
-        break;
-    case Flexbox::Baseline:
-        YGNodeStyleSetAlignContent(d->node, YGAlignBaseline);
         break;
     case Flexbox::SpaceBetween:
         YGNodeStyleSetAlignContent(d->node, YGAlignSpaceBetween);
@@ -432,7 +606,7 @@ void FlexboxAttached::setAlignContent(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setAlignItems(Flexbox::Generic value)
+void FlexboxAttached::setAlignItems(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/align-items-self
 
@@ -441,11 +615,6 @@ void FlexboxAttached::setAlignItems(Flexbox::Generic value)
     const auto oldValue = YGNodeStyleGetAlignItems(d->node);
 
     switch (value) {
-        /*
-    case Flexbox::Auto:
-        YGNodeStyleSetAlignItems(d->node, YGAlignAuto);
-        break;
-        */
     case Flexbox::FlexStart:
         YGNodeStyleSetAlignItems(d->node, YGAlignFlexStart);
         break;
@@ -461,17 +630,6 @@ void FlexboxAttached::setAlignItems(Flexbox::Generic value)
     case Flexbox::Baseline:
         YGNodeStyleSetAlignItems(d->node, YGAlignBaseline);
         break;
-        /*
-    case Flexbox::SpaceBetween:
-        YGNodeStyleSetAlignItems(d->node, YGAlignSpaceBetween);
-        break;
-    case Flexbox::SpaceAround:
-        YGNodeStyleSetAlignItems(d->node, YGAlignSpaceAround);
-        break;
-    case Flexbox::SpaceEvenly:
-        YGNodeStyleSetAlignItems(d->node, YGAlignSpaceEvenly);
-        break;
-        */
     default:
         qCWarning(lcFlexbox) << "Flexbox.alignItems: invalid value:" << value;
         Q_ASSERT_X(false, "Flexbox.alignItems", "invalid value");
@@ -483,7 +641,7 @@ void FlexboxAttached::setAlignItems(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setAlignSelf(Flexbox::Generic value)
+void FlexboxAttached::setAlignSelf(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/align-items-self
 
@@ -510,15 +668,6 @@ void FlexboxAttached::setAlignSelf(Flexbox::Generic value)
     case Flexbox::Baseline:
         YGNodeStyleSetAlignSelf(d->node, YGAlignBaseline);
         break;
-    case Flexbox::SpaceBetween:
-        YGNodeStyleSetAlignSelf(d->node, YGAlignSpaceBetween);
-        break;
-    case Flexbox::SpaceAround:
-        YGNodeStyleSetAlignSelf(d->node, YGAlignSpaceAround);
-        break;
-    case Flexbox::SpaceEvenly:
-        YGNodeStyleSetAlignSelf(d->node, YGAlignSpaceEvenly);
-        break;
     default:
         qCWarning(lcFlexbox) << "Flexbox.alignSelf: invalid value:" << value;
         Q_ASSERT_X(false, "Flexbox.alignSelf", "invalid value");
@@ -530,7 +679,7 @@ void FlexboxAttached::setAlignSelf(Flexbox::Generic value)
     }
 }
 
-void FlexboxAttached::setFlexWrap(Flexbox::Generic value)
+void FlexboxAttached::setFlexWrap(Flexbox::Value value)
 {
     // https://www.yogalayout.dev/docs/styling/flex-wrap
 
@@ -559,7 +708,7 @@ void FlexboxAttached::setFlexWrap(Flexbox::Generic value)
     }
 }
 
-Flexbox::Generic FlexboxAttached::justifyContent() const
+Flexbox::Value FlexboxAttached::justifyContent() const
 {
     switch (YGNodeStyleGetJustifyContent(d_func()->node)) {
     case YGJustifyFlexStart:
@@ -579,7 +728,7 @@ Flexbox::Generic FlexboxAttached::justifyContent() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::flexDirection() const
+Flexbox::Value FlexboxAttached::flexDirection() const
 {
     switch (YGNodeStyleGetFlexDirection(d_func()->node)) {
     case YGFlexDirectionColumn:
@@ -595,11 +744,9 @@ Flexbox::Generic FlexboxAttached::flexDirection() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::alignContent() const
+Flexbox::Value FlexboxAttached::alignContent() const
 {
     switch (YGNodeStyleGetAlignContent(d_func()->node)) {
-    case YGAlignAuto:
-        return Flexbox::Auto;
     case YGAlignFlexStart:
         return Flexbox::FlexStart;
     case YGAlignCenter:
@@ -608,8 +755,6 @@ Flexbox::Generic FlexboxAttached::alignContent() const
         return Flexbox::FlexEnd;
     case YGAlignStretch:
         return Flexbox::Stretch;
-    case YGAlignBaseline:
-        return Flexbox::Baseline;
     case YGAlignSpaceBetween:
         return Flexbox::SpaceBetween;
     case YGAlignSpaceAround:
@@ -621,13 +766,9 @@ Flexbox::Generic FlexboxAttached::alignContent() const
     }
 }
 
-Flexbox::Generic FlexboxAttached::alignItems() const
+Flexbox::Value FlexboxAttached::alignItems() const
 {
     switch (YGNodeStyleGetAlignItems(d_func()->node)) {
-        /*
-    case YGAlignAuto:
-        return Flexbox::Auto;
-        */
     case YGAlignFlexStart:
         return Flexbox::FlexStart;
     case YGAlignCenter:
@@ -638,20 +779,12 @@ Flexbox::Generic FlexboxAttached::alignItems() const
         return Flexbox::Stretch;
     case YGAlignBaseline:
         return Flexbox::Baseline;
-        /*
-    case YGAlignSpaceBetween:
-        return Flexbox::SpaceBetween;
-    case YGAlignSpaceAround:
-        return Flexbox::SpaceAround;
-    case YGAlignSpaceEvenly:
-        return Flexbox::SpaceEvenly;
-        */
     default:
         Q_UNREACHABLE();
     }
 }
 
-Flexbox::Generic FlexboxAttached::alignSelf() const
+Flexbox::Value FlexboxAttached::alignSelf() const
 {
     switch (YGNodeStyleGetAlignSelf(d_func()->node)) {
     case YGAlignAuto:
@@ -666,18 +799,12 @@ Flexbox::Generic FlexboxAttached::alignSelf() const
         return Flexbox::Stretch;
     case YGAlignBaseline:
         return Flexbox::Baseline;
-    case YGAlignSpaceBetween:
-        return Flexbox::SpaceBetween;
-    case YGAlignSpaceAround:
-        return Flexbox::SpaceAround;
-    case YGAlignSpaceEvenly:
-        return Flexbox::SpaceEvenly;
     default:
         Q_UNREACHABLE();
     }
 }
 
-Flexbox::Generic FlexboxAttached::flexWrap() const
+Flexbox::Value FlexboxAttached::flexWrap() const
 {
     switch (YGNodeStyleGetFlexWrap(d_func()->node)) {
     case YGWrapNoWrap:
@@ -759,38 +886,7 @@ void FlexboxAttached::setWidth(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetWidth(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetWidth(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetWidth(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-        if (valStr == QStringLiteral("auto")) {
-            YGNodeStyleSetWidthAuto(d->node);
-        } else {
-            bool percent = false;
-            if (valStr.endsWith('%')) {
-                percent = true;
-                valStr.chop(1);
-            }
-
-            bool ok = false;
-            const auto val = valStr.toFloat(&ok);
-            if (!ok) {
-                qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-                return;
-            }
-
-            if (percent) {
-                YGNodeStyleSetWidthPercent(d->node, val);
-            } else {
-                YGNodeStyleSetWidth(d->node, val);
-            }
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetWidth, YGNodeStyleSetWidthPercent, YGNodeStyleSetWidthAuto);
 
     if (oldValue != YGNodeStyleGetWidth(d->node)) {
         emit widthChanged();
@@ -805,38 +901,7 @@ void FlexboxAttached::setHeight(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetHeight(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetHeight(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetHeight(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-        if (valStr == QStringLiteral("auto")) {
-            YGNodeStyleSetHeightAuto(d->node);
-        } else {
-            bool percent = false;
-            if (valStr.endsWith('%')) {
-                percent = true;
-                valStr.chop(1);
-            }
-
-            bool ok = false;
-            const auto val = valStr.toFloat(&ok);
-            if (!ok) {
-                qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-                return;
-            }
-
-            if (percent) {
-                YGNodeStyleSetHeightPercent(d->node, val);
-            } else {
-                YGNodeStyleSetHeight(d->node, val);
-            }
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetHeight, YGNodeStyleSetHeightPercent, YGNodeStyleSetHeightAuto);
 
     if (oldValue != YGNodeStyleGetHeight(d->node)) {
         emit heightChanged();
@@ -861,35 +926,7 @@ void FlexboxAttached::setMinimumWidth(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetMinWidth(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetMinWidth(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetMinWidth(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool percent = false;
-        if (valStr.endsWith('%')) {
-            percent = true;
-            valStr.chop(1);
-        }
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        if (percent) {
-            YGNodeStyleSetMinWidthPercent(d->node, val);
-        } else {
-            YGNodeStyleSetMinWidth(d->node, val);
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetMinWidth, YGNodeStyleSetMinWidthPercent);
 
     if (oldValue != YGNodeStyleGetMinWidth(d->node)) {
         emit minimumWidthChanged();
@@ -904,35 +941,7 @@ void FlexboxAttached::setMinimumHeight(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetMinHeight(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetMinHeight(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetMinHeight(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool percent = false;
-        if (valStr.endsWith('%')) {
-            percent = true;
-            valStr.chop(1);
-        }
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        if (percent) {
-            YGNodeStyleSetMinHeightPercent(d->node, val);
-        } else {
-            YGNodeStyleSetMinHeight(d->node, val);
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetMinHeight, YGNodeStyleSetMinHeightPercent);
 
     if (oldValue != YGNodeStyleGetMinHeight(d->node)) {
         emit minimumHeightChanged();
@@ -947,35 +956,7 @@ void FlexboxAttached::setMaximumWidth(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetMaxWidth(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetMaxWidth(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetMaxWidth(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool percent = false;
-        if (valStr.endsWith('%')) {
-            percent = true;
-            valStr.chop(1);
-        }
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        if (percent) {
-            YGNodeStyleSetMaxWidthPercent(d->node, val);
-        } else {
-            YGNodeStyleSetMaxWidth(d->node, val);
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetMaxWidth, YGNodeStyleSetMaxWidthPercent);
 
     if (oldValue != YGNodeStyleGetMaxWidth(d->node)) {
         emit maximumWidthChanged();
@@ -990,35 +971,7 @@ void FlexboxAttached::setMaximumHeight(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetMaxHeight(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetMaxHeight(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetMaxHeight(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool percent = false;
-        if (valStr.endsWith('%')) {
-            percent = true;
-            valStr.chop(1);
-        }
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        if (percent) {
-            YGNodeStyleSetMaxHeightPercent(d->node, val);
-        } else {
-            YGNodeStyleSetMaxHeight(d->node, val);
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetMaxHeight, YGNodeStyleSetMaxHeightPercent);
 
     if (oldValue != YGNodeStyleGetMaxHeight(d->node)) {
         emit maximumHeightChanged();
@@ -1085,7 +1038,7 @@ void FlexboxAttached::setVerticalMargin(QJSValue value)
     d_func()->setMargin(YGEdgeVertical, value);
 }
 
-void FlexboxAttached::setMargins(QJSValue value)
+void FlexboxAttached::setMargin(QJSValue value)
 {
     d_func()->setMargin(YGEdgeAll, value);
 }
@@ -1130,7 +1083,7 @@ QJSValue FlexboxAttached::verticalMargin() const
     return FlexboxInlines::toJSValue(YGNodeStyleGetMargin(d_func()->node, YGEdgeVertical));
 }
 
-QJSValue FlexboxAttached::margins() const
+QJSValue FlexboxAttached::margin() const
 {
     return FlexboxInlines::toJSValue(YGNodeStyleGetMargin(d_func()->node, YGEdgeAll));
 }
@@ -1265,7 +1218,7 @@ void FlexboxAttached::setVerticalBorder(QJSValue value)
     d_func()->setBorder(YGEdgeVertical, value);
 }
 
-void FlexboxAttached::setBorders(QJSValue value)
+void FlexboxAttached::setBorder(QJSValue value)
 {
     d_func()->setBorder(YGEdgeAll, value);
 }
@@ -1310,7 +1263,7 @@ QJSValue FlexboxAttached::verticalBorder() const
     return FlexboxInlines::toJSValue(YGNodeStyleGetBorder(d_func()->node, YGEdgeVertical));
 }
 
-QJSValue FlexboxAttached::borders() const
+QJSValue FlexboxAttached::border() const
 {
     return FlexboxInlines::toJSValue(YGNodeStyleGetBorder(d_func()->node, YGEdgeAll));
 }
@@ -1353,25 +1306,7 @@ void FlexboxAttached::setFlex(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetFlex(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetFlex(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetFlex(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        YGNodeStyleSetFlex(d->node, val);
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetFlex);
 
     if (oldValue != YGNodeStyleGetFlex(d->node)) {
         emit flexChanged();
@@ -1386,25 +1321,7 @@ void FlexboxAttached::setFlexGrow(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetFlexGrow(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetFlexGrow(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetFlexGrow(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        YGNodeStyleSetFlexGrow(d->node, val);
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetFlexGrow);
 
     if (oldValue != YGNodeStyleGetFlexGrow(d->node)) {
         emit flexGrowChanged();
@@ -1419,39 +1336,7 @@ void FlexboxAttached::setFlexBasis(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetFlexBasis(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetFlexBasisAuto(d->node);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetFlexBasis(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        if (valStr == QStringLiteral("auto")) {
-            YGNodeStyleSetFlexBasisAuto(d->node);
-        } else {
-            bool percent = false;
-            if (valStr.endsWith('%')) {
-                percent = true;
-                valStr.chop(1);
-            }
-
-            bool ok = false;
-            const auto val = valStr.toFloat(&ok);
-            if (!ok) {
-                qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-                return;
-            }
-
-            if (percent) {
-                YGNodeStyleSetFlexBasisPercent(d->node, val);
-            } else {
-                YGNodeStyleSetFlexBasis(d->node, val);
-            }
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetFlexBasis, YGNodeStyleSetFlexBasisPercent, YGNodeStyleSetFlexBasisAuto);
 
     if (oldValue != YGNodeStyleGetFlexBasis(d->node)) {
         emit flexBasisChanged();
@@ -1466,25 +1351,7 @@ void FlexboxAttached::setFlexShrink(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetFlexShrink(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetFlexShrink(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetFlexShrink(d->node, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        YGNodeStyleSetFlexShrink(d->node, val);
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetFlexShrink);
 
     if (oldValue != YGNodeStyleGetFlexShrink(d->node)) {
         emit flexShrinkChanged();
@@ -1519,14 +1386,7 @@ void FlexboxAttached::setAspectRatio(QJSValue value)
 
     const auto oldValue = YGNodeStyleGetAspectRatio(d->node);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetAspectRatio(d->node, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetAspectRatio(d->node, value.toNumber());
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(d->node, value, YGNodeStyleSetAspectRatio);
 
     if (oldValue != YGNodeStyleGetAspectRatio(d->node)) {
         emit aspectRatioChanged();
@@ -1538,6 +1398,43 @@ QJSValue FlexboxAttached::aspectRatio() const
     return FlexboxInlines::toJSValue(YGNodeStyleGetAspectRatio(d_func()->node));
 }
 
+void FlexboxAttached::setAutoDisplay(bool yes)
+{
+    Q_D(FlexboxAttached);
+
+    if (d->autoDisplay != yes) {
+        d->autoDisplay = yes;
+        emit autoDisplayChanged();
+
+        d->updateDisplay();
+    }
+}
+
+bool FlexboxAttached::isAutoDisplay() const
+{
+    return d_func()->autoDisplay;
+}
+
+void FlexboxAttached::timerEvent(QTimerEvent *)
+{
+    Q_D(FlexboxAttached);
+
+    if (d->dirtyTimer != 0) {
+        killTimer(d->dirtyTimer);
+        d->dirtyTimer = 0;
+
+        QQuickItemPrivate *itemd = QQuickItemPrivate::get(d->item);
+        if (itemd->componentComplete) {
+            YGNodeCalculateLayout(d->node,
+                                  itemd->widthValid() ? itemd->width : YGUndefined,
+                                  itemd->heightValid() ? itemd->height : YGUndefined,
+                                  YGDirectionInherit);
+
+            d->applyLayout();
+        }
+    }
+}
+
 // class FlexboxAttachedPrivate
 
 void FlexboxAttachedPrivate::onDirtied(YGNodeConstRef node)
@@ -1547,18 +1444,14 @@ void FlexboxAttachedPrivate::onDirtied(YGNodeConstRef node)
 
 void FlexboxAttachedPrivate::buildLayout()
 {
+    Q_Q(FlexboxAttached);
+
     if (YGNodeGetParent(node)) {
         return;
     }
 
-    QQuickItemPrivate *itemd = QQuickItemPrivate::get(item);
-    if (itemd->componentComplete) {
-        YGNodeCalculateLayout(node,
-                              itemd->widthValid() ? item->width() : YGUndefined,
-                              itemd->heightValid() ? item->height() : YGUndefined,
-                              YGDirectionInherit);
-
-        applyLayout();
+    if (dirtyTimer == 0) {
+        dirtyTimer = q->startTimer(1);
     }
 }
 
@@ -1569,13 +1462,15 @@ void FlexboxAttachedPrivate::applyLayout()
     }
     YGNodeSetHasNewLayout(node, false);
 
-    const auto x = YGNodeLayoutGetLeft(node);
-    if (item->x() != x) {
-        item->setProperty("x", x);
-    }
-    const auto y = YGNodeLayoutGetTop(node);
-    if (item->y() != y) {
-        item->setProperty("y", y);
+    if (YGNodeGetParent(node)) {
+        const auto x = YGNodeLayoutGetLeft(node);
+        if (item->x() != x) {
+            item->setProperty("x", x);
+        }
+        const auto y = YGNodeLayoutGetTop(node);
+        if (item->y() != y) {
+            item->setProperty("y", y);
+        }
     }
 
     if (sizeType == UnknownSize) {
@@ -1621,38 +1516,7 @@ void FlexboxAttachedPrivate::setPosition(YGEdge edge, QJSValue value)
 
     const auto oldValue = YGNodeStyleGetPosition(node, edge);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetPosition(node, edge, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetPosition(node, edge, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-        if (valStr == QStringLiteral("auto")) {
-            YGNodeStyleSetPositionAuto(node, edge);
-        } else {
-            bool percent = false;
-            if (valStr.endsWith('%')) {
-                percent = true;
-                valStr.chop(1);
-            }
-
-            bool ok = false;
-            const auto val = valStr.toFloat(&ok);
-            if (!ok) {
-                qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-                return;
-            }
-
-            if (percent) {
-                YGNodeStyleSetPositionPercent(node, edge, val);
-            } else {
-                YGNodeStyleSetPosition(node, edge, val);
-            }
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(node, edge, value, YGNodeStyleSetPosition, YGNodeStyleSetPositionPercent, YGNodeStyleSetPositionAuto);
 
     if (oldValue != YGNodeStyleGetPosition(node, edge)) {
         switch (edge) {
@@ -1688,38 +1552,7 @@ void FlexboxAttachedPrivate::setMargin(YGEdge edge, QJSValue value)
 
     const auto oldValue = YGNodeStyleGetMargin(node, edge);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetMargin(node, edge, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetMargin(node, edge, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-        if (valStr == QStringLiteral("auto")) {
-            YGNodeStyleSetMarginAuto(node, edge);
-        } else {
-            bool percent = false;
-            if (valStr.endsWith('%')) {
-                percent = true;
-                valStr.chop(1);
-            }
-
-            bool ok = false;
-            const auto val = valStr.toFloat(&ok);
-            if (!ok) {
-                qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-                return;
-            }
-
-            if (percent) {
-                YGNodeStyleSetMarginPercent(node, edge, val);
-            } else {
-                YGNodeStyleSetMargin(node, edge, val);
-            }
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(node, edge, value, YGNodeStyleSetMargin, YGNodeStyleSetMarginPercent, YGNodeStyleSetMarginAuto);
 
     if (oldValue != YGNodeStyleGetMargin(node, edge)) {
         switch (edge) {
@@ -1748,7 +1581,7 @@ void FlexboxAttachedPrivate::setMargin(YGEdge edge, QJSValue value)
             emit q->verticalMarginChanged();
             break;
         case YGEdgeAll:
-            emit q->marginsChanged();
+            emit q->marginChanged();
             break;
         default:
             Q_UNREACHABLE();
@@ -1764,35 +1597,7 @@ void FlexboxAttachedPrivate::setPadding(YGEdge edge, QJSValue value)
 
     const auto oldValue = YGNodeStyleGetPadding(node, edge);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetPadding(node, edge, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetPadding(node, edge, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool percent = false;
-        if (valStr.endsWith('%')) {
-            percent = true;
-            valStr.chop(1);
-        }
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        if (percent) {
-            YGNodeStyleSetPaddingPercent(node, edge, val);
-        } else {
-            YGNodeStyleSetPadding(node, edge, val);
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(node, edge, value, YGNodeStyleSetPadding, YGNodeStyleSetPaddingPercent);
 
     if (oldValue != YGNodeStyleGetPadding(node, edge)) {
         switch (edge) {
@@ -1837,25 +1642,7 @@ void FlexboxAttachedPrivate::setBorder(YGEdge edge, QJSValue value)
 
     const auto oldValue = YGNodeStyleGetBorder(node, edge);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetBorder(node, edge, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetBorder(node, edge, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        YGNodeStyleSetBorder(node, edge, val);
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(node, edge, value, YGNodeStyleSetBorder);
 
     if (oldValue != YGNodeStyleGetBorder(node, edge)) {
         switch (edge) {
@@ -1884,7 +1671,7 @@ void FlexboxAttachedPrivate::setBorder(YGEdge edge, QJSValue value)
             emit q->verticalBorderChanged();
             break;
         case YGEdgeAll:
-            emit q->bordersChanged();
+            emit q->borderChanged();
             break;
         default:
             Q_UNREACHABLE();
@@ -1900,35 +1687,7 @@ void FlexboxAttachedPrivate::setGap(YGGutter gutter, QJSValue value)
 
     const auto oldValue = YGNodeStyleGetGap(node, gutter);
 
-    if (value.isUndefined()) {
-        YGNodeStyleSetGap(node, gutter, YGUndefined);
-    } else if (value.isNumber()) {
-        YGNodeStyleSetGap(node, gutter, value.toNumber());
-    } else if (value.isString()) {
-        QString valStr = value.toString();
-
-        bool percent = false;
-        if (valStr.endsWith('%')) {
-            percent = true;
-            valStr.chop(1);
-        }
-
-        bool ok = false;
-        const auto val = valStr.toFloat(&ok);
-        if (!ok) {
-            qWarning(lcFlexbox, "invalid String value: %s", qUtf8Printable(value.toString()));
-            return;
-        }
-
-        if (percent) {
-            YGNodeStyleSetGapPercent(node, gutter, val);
-        } else {
-            YGNodeStyleSetGap(node, gutter, val);
-        }
-    } else {
-        qWarning(lcFlexbox, "invalid value: %s", qUtf8Printable(value.toString()));
-        return;
-    }
+    FlexboxInlines::setValue(node, gutter, value, YGNodeStyleSetGap, YGNodeStyleSetGapPercent);
 
     if (oldValue != YGNodeStyleGetGap(node, gutter)) {
         switch (gutter) {
@@ -1977,15 +1736,23 @@ void FlexboxAttachedPrivate::itemChildRemoved(QQuickItem *, QQuickItem *child)
 
 void FlexboxAttachedPrivate::itemVisibilityChanged(QQuickItem *)
 {
-    Q_Q(FlexboxAttached);
-
-    if (item->isVisible()) {
-        q->setDisplay(Flexbox::Flex);
-    } else {
-        q->setDisplay(Flexbox::None);
-    }
+    updateDisplay();
 }
 
 void FlexboxAttachedPrivate::itemOpacityChanged(QQuickItem *)
 {
+    updateDisplay();
+}
+
+void FlexboxAttachedPrivate::updateDisplay()
+{
+    Q_Q(FlexboxAttached);
+
+    if (autoDisplay) {
+        if (item->isVisible() && (item->opacity() > 0)) {
+            q->setDisplay(Flexbox::Flex);
+        } else {
+            q->setDisplay(Flexbox::None);
+        }
+    }
 }
