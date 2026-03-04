@@ -79,3 +79,34 @@ Item { // vertical stack with padding and gaps
     }
 }
 ```
+
+---
+
+## Using the Flexbox sources in your own project
+
+If you want to reuse this Flexbox implementation in another CMake/Qt project, add the Yoga sources and the three core Flexbox files to the target that hosts your QML engine.
+
+Assuming you copy the Flexbox files (`Flexbox.h`, `Flexbox_p.h`, `Flexbox.cpp`) to the project root and place the Yoga sources under a `yoga/` subdirectory, a minimal CMake setup looks like this:
+
+```cmake
+cmake_minimum_required(VERSION 3.16)
+project(MyApp LANGUAGES CXX)
+
+find_package(Qt6 REQUIRED COMPONENTS Quick)
+
+file(GLOB_RECURSE YOGA_SOURCES "yoga/*.cpp")
+
+qt_add_executable(MyApp
+    src/main.cpp
+
+    # Flexbox core
+    ${YOGA_SOURCES}
+    Flexbox.h
+    Flexbox_p.h
+    Flexbox.cpp
+)
+
+target_link_libraries(MyApp PRIVATE Qt6::Quick)
+```
+
+In this Flexbox demo, the main application target is wired up in a very similar way (see `CMakeLists.txt`), with Yoga sources and the three Flexbox files added to the `Flexbox` executable target. Once linked, the `Flexbox` attached property becomes available to QML code in that application.
