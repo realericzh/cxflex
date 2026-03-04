@@ -1,0 +1,10 @@
+<h1>Width and Height</h1>
+The width property specifies the width of the node's border box (the collective size of the node's content, padding, and border). Similarly height property specifies the height of the node's border box.<br />
+<br />
+Both width and height can take following values:<br />
+<br />
+<b>Auto</b>: The default Value, Yoga calculates the width/height for the node based on its content, whether that is other children, text, or an image.<br />
+<br />
+<b>Pixels</b>: Defines the width/height in absolute pixels. Depending on other properties set on the Yoga node this may or may not be the final dimension of the node.<br />
+<br />
+<b>Percentage</b>: Defines the width or height in percentage of its containing block's width or height respectively.<br />

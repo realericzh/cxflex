@@ -1,0 +1,2 @@
+<h1>Min/Max Width and Height</h1>
+These properties set the maximum and minimum size constraints of a node. They have higher priority than all other properties and will always be respected. Constraints can be specified as either absolute pixel values or as percentages of their containing block's size. By default all these constraints are <code>undefined</code>.<br />

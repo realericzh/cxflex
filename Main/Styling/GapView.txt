@@ -1,0 +1,4 @@
+<h1>Gap</h1>
+Gap will add spacing between the rows and columns of a flex container. You can specify if you want the gaps to be between only the rows, only the columns, or both. You can do this by passing in the corresponding gutter value to the API, for example<br />
+<pre><code>Flexbox.rowGap: 5</code></pre>
+<br />

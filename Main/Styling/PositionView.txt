@@ -1,0 +1,6 @@
+<h1>Position</h1>
+<b>Relative (default)</b>: This node is laid out according to the specified flow of the flex container it is apart of. That is, it particpates in the flexbox algorithm and will take up space within the container, unlike absolute. Insets will offset the node from its normal position within its container. This node will always form a containing block.<br />
+<br />
+<b>Absolute</b>: This node is removed from the specified flow of the flex container it is apart of. Absolute nodes do not take up space in its flex container and will not affect the position of its siblings. Insets will offset the node from its containing block.<br />
+<br />
+<b>Static</b>: This node behaves like relative except it will ignore insets and will not form a containing block.<br />

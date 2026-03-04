@@ -1,0 +1,11 @@
+<h1>Insets</h1>
+Insets refer to the position property that you can assign to an edge (not to be confused with position type) using one of the following APIs:<br />
+<pre><code>Flexbox.left: 5</code></pre>
+<br />
+This property will offset the node in a specific way depending on what position type the node has.<br />
+<ul>
+<li>If the node is static then insets have no effect.</li>
+<li>If the node is relative then insets will move the node the designated amount from where the node would normally be in the container. Each inset property is relative to the node's corresponding physical edge. So <code>Flexbox.right: 10</code> will offset the node so that the right edge is 10 units away from where the right edge would be originally.</li>
+<li>If the node is absolute then insets will move the node the designated amount away from the node's containing block. So <code>Flexbox.right: 10</code> will offset the node so that the right edge is 10 units away from the containing block's right edge.</li>
+</ul>
+In the event that a node has a fixed size and opposite insets are defined (e.g. a value assigned to the right edge and left edge) then the left and top edge will have priority.<br />

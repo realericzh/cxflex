@@ -1,0 +1,9 @@
+<h1>Aspect Ratio</h1>
+The aspect ratio property in Yoga has the following properties:
+<ul>
+    <li>Accepts any floating point value > 0, the default is undefined.</li>
+    <li>Defined as the ratio between the width and the height of a node e.g. if a node has an aspect ratio of 2 then its width is twice the size of its height.</li>
+    <li>Respects the min and max dimensions of an item.</li>
+    <li>Has higher priority than flex grow.</li>
+    <li>If aspect ratio, width, and height are set then the cross axis dimension is overridden.</li>
+</ul>

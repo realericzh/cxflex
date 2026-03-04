@@ -1,0 +1,6 @@
+<h1>Display</h1>
+Display controls which layout specification to follow.<br />
+<br />
+<b>Flex (default)</b>: The CSS Flexible Box Model specification.<br />
+<br />
+<b>None</b>: The node is removed from the layout tree and will not be visible.<br />

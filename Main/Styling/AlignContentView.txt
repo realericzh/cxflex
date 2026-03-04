@@ -1,0 +1,16 @@
+<h1>Align Content</h1>
+Align content defines the distribution of lines along the cross-axis. This only has effect when items are wrapped to multiple lines using flex wrap.<br />
+<br />
+<b>Flex start (default)</b>: Align wrapped lines to the start of the container's cross axis.<br />
+<br />
+<b>Flex end</b>: Align wrapped lines to the end of the container's cross axis.<br />
+<br />
+<b>Stretch</b>: Stretch wrapped lines to match the height of the container's cross axis.<br />
+<br />
+<b>Center</b>: Align wrapped lines in the center of the container's cross axis.<br />
+<br />
+<b>Space between</b>: Evenly space wrapped lines across the container's cross axis, distributing remaining space between the lines.<br />
+<br />
+<b>Space around</b>: Evenly space wrapped lines across the container's cross axis, distributing remaining space around the lines. Compared to space between using space around will result in space being distributed to the beginning of the first lines and end of the last line.<br />
+<br />
+<b>Space evenly</b>: Evenly space wrapped lines across the container's cross axis, distributing remaining space around the lines. Compared to space around, space evenly will not double the gaps between children. The size of gaps between children and between the parent's edges and the first/last child will all be equal.<br />

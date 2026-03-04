@@ -1,0 +1,2 @@
+<h1>Flex Basis, Grow, and Shrink</h1>
+<b>Flex basis</b>: Is an axis-independent way of providing the default size of an item along the main axis. Setting the flex basis of a child is similar to setting the width of that child if its parent is a container with a row flex direction or setting the height of a child if its parent is a container with a column flex direction. The flex basis of an item is the default size of that item, the size of the item before any flex grow and flex shrink calculations are performed.<br />

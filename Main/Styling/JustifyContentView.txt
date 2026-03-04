@@ -1,0 +1,14 @@
+<h1>Justify Content</h1>
+Justify content describes how to align children within the main axis of their container. For example, you can use this property to center a child horizontally within a container with flex direction set to row or vertically within a container with flex direction set to column.<br />
+<br />
+<b>Flex start (default)</b>: Align children of a container to the start of the container's main axis.<br />
+<br />
+<b>Flex end</b>: Align children of a container to the end of the container's main axis.<br />
+<br />
+<b>Center</b>: Align children of a container in the center of the container's main axis.<br />
+<br />
+<b>Space between</b>: Evenly space of children across the container's main axis, distributing remaining space between the children.<br />
+<br />
+<b>Space around</b>: Evenly space of children across the container's main axis, distributing remaining space around the children. Compared to space between using space around will result in space being distributed to the beginning of the first child and end of the last child.<br />
+<br />
+<b>Space evenly</b>: Evenly distributed within the alignment container along the main axis. The spacing between each pair of adjacent items, the main-start edge and the first item, and the main-end edge and the last item, are all exactly the same.<br />
